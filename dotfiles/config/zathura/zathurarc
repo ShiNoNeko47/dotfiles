@@ -1,0 +1,6 @@
+set adjust-open "width"
+set recolor-lightcolor "#101010"
+set recolor true
+set render-loading false
+set highlight-color "#dd0000"
+set highlight-active-color "#bb0000"

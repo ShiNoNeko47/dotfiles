@@ -1,0 +1,8 @@
+output HDMI1
+off
+output eDP1
+crtc 0
+mode 1600x900
+pos 160x1080
+primary
+rate 60.06

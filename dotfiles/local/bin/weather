@@ -1,0 +1,41 @@
+#!/usr/bin/python
+
+import requests
+
+def direction(deg):
+    if deg < 23:
+        return 'North'
+    elif deg < 68:
+        return 'North-East'
+    elif deg < 113:
+        return 'East'
+    elif deg < 158:
+        return 'South-East'
+    elif deg < 203:
+        return 'South'
+    elif deg < 248:
+        return 'South-West'
+    elif deg < 293:
+        return 'West'
+    elif deg < 338:
+        return 'North-West'
+    return 'North'
+
+def main():
+    data = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Čakovec&units=metric&appid=461a0105982d982368022b799399c9f1')
+    if data.status_code == 200:
+        weather = data.json()
+        print(weather['name'])
+        print()
+        print('Weather:         {0}\n'.format(weather['weather'][0]['description']))
+        print('Temperature:     {0}°C'.format(weather['main']['temp']))
+        print('Feels like:      {0}°C\n'. format(weather['main']['feels_like']))
+        print('Pressure:        {0} hPa\n'. format(weather['main']['pressure']))
+        print('Humidity:        {0}%\n'. format(weather['main']['humidity']))
+        print('Wind speed:      {0} m/s'. format(weather['wind']['speed']))
+        print('Direction:       {0}'. format(direction(weather['wind']['deg'])))
+    else:
+        print('Error: {0}'.format(data.status_code))
+
+if __name__ == '__main__':
+    main()

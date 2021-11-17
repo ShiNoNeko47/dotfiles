@@ -1,0 +1,72 @@
+[global]
+    monitor = 1
+
+    follow = none
+
+    width = 600
+    origin = top-right
+    offset = 50x50
+
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    
+    indicate_hidden = yes
+
+    transparency = 0
+
+    separator_height = 2
+    padding = 30
+    horizontal_padding = 30
+    frame_width = 1
+    frame_color = "#4e4246"
+    separator_color = frame
+    sort = yes
+    idle_threshold = 120
+    font = Monospace 12
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = no
+    icon_position = off
+    sticky_history = yes
+    history_length = 20
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/qutebrowser
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    #startup_notification = false
+    #verbosity = mesg
+    corner_radius = 0
+    ignore_dbusclose = false
+    force_xinerama = false
+    mouse_middle_click = close_current
+    mouse_left_click = do_action, close_current
+    mouse_right_click = close_all
+
+[urgency_low]
+    background = "#2d2427"
+    foreground = "#82849d"
+    timeout = 10
+
+[urgency_normal]
+    background = "#2d2427"
+    foreground = "#82849d"
+    timeout = 10
+
+[urgency_critical]
+    background = "#2d2427"
+    foreground = "#82849d"
+    frame_color = "#ff0000"
+    timeout = 0

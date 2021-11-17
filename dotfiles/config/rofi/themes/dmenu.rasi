@@ -1,0 +1,34 @@
+* {
+    background-color:           #101010;
+    border-color:               #ff0000;
+    text-color:                 #dce0ec;
+    height:                     20px;
+    font:                       "Source Code Pro Regular 9";
+}
+#window {
+    anchor: north;
+    location: north;
+    width: 100%;
+    padding: 0px;
+    children: [ horibox ];
+}
+#horibox {
+    orientation: horizontal;
+    children: [ entry, listview ];
+}
+#listview {
+    layout: horizontal;
+    lines: 100;
+}
+#entry {
+    padding: 2px;
+    expand: false;
+    width: 10em;
+}
+#element {
+    padding: 2px 8px;
+}
+#element selected {
+    background-color: @text-color;
+    text-color:       @background-color;
+}

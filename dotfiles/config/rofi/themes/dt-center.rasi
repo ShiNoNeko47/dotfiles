@@ -1,0 +1,59 @@
+* {
+    background-color:            #101010;
+    border-color:                #ff0000;
+    text-color:                  #dce0ec;
+    font:                        "Source Code Pro Regular 9";
+}
+#window {
+    border:  1;
+    padding: 5;
+    background-color:            #101010;
+    children:[ horibox ];
+}
+#horibox {
+    border:  0;
+    padding: 0;
+    background-color:            #101010;
+    children:[ entry, listview ];
+}
+#message {
+    border:       1px dash 0px 0px ;
+    padding:      1px ;
+    background-color:            #101010;
+    text-color:       @text-color;
+}
+#listview {
+    fixed-height: 0;
+    border:       1px dash 0px 0px ;
+    border-color: @border-color ;
+    spacing:      2px ;
+    scrollbar:    false;
+    padding:      2px 0px 0px ;
+}
+#element normal normal {
+    border:  0;
+    padding: 1px ;
+    background-color: @background-color;
+    text-color:       @text-color;
+}
+#element alternate normal {
+    border:  0;
+    padding: 1px ;
+    background-color: @background-color;
+    text-color:       @text-color;
+}
+#element selected normal {
+    background-color: @text-color;
+    text-color:       @background-color;
+}
+#entry {
+    height: 20px;
+    expand: false;
+    width: 10em;
+    background-color: @background-color;
+    text-color:       @text-color;
+    border: 0;
+}
+#textbox {
+    text-color: @text-color;
+}

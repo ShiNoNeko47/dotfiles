@@ -1,0 +1,145 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  f_profile:
+    src: profile
+    dst: ~/.profile
+  f_vimrc:
+    src: vimrc
+    dst: ~/.vimrc
+    chmod: '755'
+  f_rena.vim:
+    src: vim/colors/Rena.vim
+    dst: ~/.vim/colors/Rena.vim
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
+  f_xresources:
+    src: Xresources
+    dst: ~/.Xresources
+  f_xmodmap:
+    src: Xmodmap
+    dst: ~/.Xmodmap
+  f_rtorrent.rc:
+    src: rtorrent.rc
+    dst: ~/.rtorrent.rc
+    chmod: '755'
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+  f_weather:
+    src: local/bin/weather
+    dst: ~/.local/bin/weather
+    chmod: '755'
+  f_toggle_picom:
+    src: local/bin/toggle_picom
+    dst: ~/.local/bin/toggle_picom
+    chmod: '755'
+  f_screenshot:
+    src: local/bin/screenshot
+    dst: ~/.local/bin/screenshot
+    chmod: '755'
+  f_screenshot_select:
+    src: local/bin/screenshot_select
+    dst: ~/.local/bin/screenshot_select
+    chmod: '755'
+  f_public_ip:
+    src: local/bin/public_ip
+    dst: ~/.local/bin/public_ip
+    chmod: '755'
+  f_bookmarks:
+    src: local/share/ranger/bookmarks
+    dst: ~/.local/share/ranger/bookmarks
+  f_qt5_passwordmanager.desktop:
+    src: local/share/applications/Qt5_PasswordManager.desktop
+    dst: ~/.local/share/applications/Qt5_PasswordManager.desktop
+  d_autorandr:
+    src: config/autorandr
+    dst: ~/.config/autorandr
+  d_cava:
+    src: config/cava
+    dst: ~/.config/cava
+  d_dunst:
+    src: config/dunst
+    dst: ~/.config/dunst
+  f_kitty.conf:
+    src: config/kitty/kitty.conf
+    dst: ~/.config/kitty/kitty.conf
+  d_maestral:
+    src: config/maestral
+    dst: ~/.config/maestral
+  d_neofetch:
+    src: config/neofetch
+    dst: ~/.config/neofetch
+  d_picom:
+    src: config/picom
+    dst: ~/.config/picom
+  f_autostart.sh:
+    src: config/qtile/autostart.sh
+    dst: ~/.config/qtile/autostart.sh
+    chmod: '755'
+  f_config.py:
+    src: config/qtile/config.py
+    dst: ~/.config/qtile/config.py
+  d_qutebrowser:
+    src: config/qutebrowser
+    dst: ~/.config/qutebrowser
+    chmod: '700'
+  d_ranger:
+    src: config/ranger
+    dst: ~/.config/ranger
+  d_rofi:
+    src: config/rofi
+    dst: ~/.config/rofi
+  d_zathura:
+    src: config/zathura
+    dst: ~/.config/zathura
+  d_xorg.conf.d:
+    src: etc/X11/xorg.conf.d
+    dst: /etc/X11/xorg.conf.d
+  f_lxpolkit.desktop:
+    src: etc/xdg/autostart/lxpolkit.desktop
+    dst: /etc/xdg/autostart/lxpolkit.desktop
+  d_grub_theme_higurashi:
+    src: boot/grub/themes/grub_theme_higurashi
+    dst: /boot/grub/themes/grub_theme_higurashi
+  d_mutt:
+    src: config/mutt
+    dst: ~/.config/mutt
+profiles:
+  Arch:
+    dotfiles:
+    - f_profile
+    - f_vimrc
+    - f_rena.vim
+    - f_xinitrc
+    - f_xresources
+    - f_xmodmap
+    - f_rtorrent.rc
+    - f_bashrc
+    - f_weather
+    - f_toggle_picom
+    - f_screenshot
+    - f_screenshot_select
+    - f_public_ip
+    - f_bookmarks
+    - f_qt5_passwordmanager.desktop
+    - d_autorandr
+    - d_cava
+    - d_dunst
+    - f_kitty.conf
+    - d_maestral
+    - d_neofetch
+    - d_picom
+    - f_autostart.sh
+    - f_config.py
+    - d_qutebrowser
+    - d_ranger
+    - d_rofi
+    - d_zathura
+    - d_xorg.conf.d
+    - f_lxpolkit.desktop
+    - d_grub_theme_higurashi
+    - d_mutt
