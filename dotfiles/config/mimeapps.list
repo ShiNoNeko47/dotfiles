@@ -1,0 +1,21 @@
+
+[Default Applications]
+text/html=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/viber=viber.desktop
+x-scheme-handler/etcher=balena-etcher-electron.desktop
+inode/directory=ranger.desktop
+text/x-moc=Neovim.desktop
+text/x-tex=Neovim.desktop
+text/x-pascal=Neovim.desktop
+text/x-java=Neovim.desktop
+text/x-chdr=Neovim.desktop
+text/x-csrc=Neovim.desktop
+text/x-makefile=Neovim.desktop
+text/x-c++src=Neovim.desktop
+text/plain=Neovim.desktop
+text/tcl=Neovim.desktop
+text/x-c++hdr=Neovim.desktop

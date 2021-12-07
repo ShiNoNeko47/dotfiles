@@ -1,0 +1,35 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+unset LINES
+unset COLUMNS
+
+fortune
+alias dotdrop='/home/nikola/Documents/GitHub/dotfiles/dotdrop.sh --cfg=/home/nikola/Documents/GitHub/dotfiles/config.yaml'
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
+
+function zle-line-init zle-keymap-select {
+    case ${KEYMAP} in
+        (vicmd)      mode="N" ;;
+        (main|viins) mode="I" ;;
+        (*)          mode="I" ;;
+    esac
+        PS1="
+ %F{15}%~ %F{202}$mode %F{15}>>%f "
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select

@@ -1,0 +1,10 @@
+#!/usr/bin/python
+import os
+
+path = os.path.expanduser('~/Downloads/')
+files = os.listdir(path)
+
+for file in files:
+    if file.endswith('.torrent'):
+        print(file)
+        os.remove(path + file)

@@ -108,6 +108,36 @@ dotfiles:
   d_mutt:
     src: config/mutt
     dst: ~/.config/mutt
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
+  f_init.vim:
+    src: config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+    chmod: '755'
+  d_colors:
+    src: config/nvim/colors
+    dst: ~/.config/nvim/colors
+  d_calcurse:
+    src: config/calcurse
+    dst: ~/.config/calcurse
+    chmod: '700'
+  f_tooltip-gtk2.qss:
+    src: config/qt5ct/qss/tooltip-gtk2.qss
+    dst: ~/.config/qt5ct/qss/tooltip-gtk2.qss
+  f_mimeapps.list:
+    src: config/mimeapps.list
+    dst: ~/.config/mimeapps.list
+  f_clear-torents:
+    src: local/bin/clear-torents
+    dst: ~/.local/bin/clear-torents
+    chmod: '755'
+  f_qpassword_manager.desktop:
+    src: local/share/applications/qpassword_manager.desktop
+    dst: ~/.local/share/applications/qpassword_manager.desktop
 profiles:
   Arch:
     dotfiles:
@@ -143,3 +173,12 @@ profiles:
     - f_lxpolkit.desktop
     - d_grub_theme_higurashi
     - d_mutt
+    - f_zshrc
+    - f_zprofile
+    - f_init.vim
+    - d_colors
+    - d_calcurse
+    - f_tooltip-gtk2.qss
+    - f_mimeapps.list
+    - f_clear-torents
+    - f_qpassword_manager.desktop
