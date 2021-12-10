@@ -27,6 +27,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'zivyangll/git-blame.vim'
+Plug 'stevearc/vim-arduino'
 call plug#end()
 
 " autocmd VimEnter * NERDTree | wincmd p
@@ -45,9 +46,19 @@ set ut=1000
 
 let g:mapleader=' '
 nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
-map <leader>p :LLPStartPreview<CR>
+nnoremap <leader>p :LLPStartPreview<CR>
 let g:pymode_rope_complete_on_dot = 0
 
-let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsExpandTrigger="<leader>s"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+
+nnoremap <leader>am <cmd>ArduinoVerify<CR>
+nnoremap <leader>au <cmd>ArduinoUpload<CR>
+nnoremap <leader>ad <cmd>ArduinoUploadAndSerial<CR>
+nnoremap <leader>ab <cmd>ArduinoChooseBoard<CR>
+nnoremap <leader>ap <cmd>ArduinoChooseProgrammer<CR> 
+
+nnoremap <leader>t <cmd>terminal<CR>
+tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * startinsert

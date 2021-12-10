@@ -8,9 +8,9 @@ terminal-font: "Unifont Regular 16"
     top = 50%-150
     width = 800
     height = 300
-    item_font = "Source Code Pro Regular 36"
+    item_font = "Fira Code Regular 32"
     item_color = "#ffffff"
-    selected_item_font = "Source Code Pro Regular 36"
+    selected_item_font = "Fira Code Regular 32"
     selected_item_color= "#FF0000"
     item_height = 50
     item_padding = 10

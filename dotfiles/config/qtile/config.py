@@ -29,30 +29,30 @@ from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Screen, Match
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
-import time
-from libqtile.popup import Popup
-from libqtile import qtile
-import requests
 
 import os
 import subprocess
 from libqtile import hook
+
+
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser("~")
     subprocess.Popen([home + "/.config/qtile/autostart.sh"])
 
+
 mod = "mod4"
 
 keys = [
     Key([mod, "shift"], "Return",
-    lazy.spawn("rofi -show drun -config ~/.config/rofi/themes/dt-center.rasi -monitor -4 -display-drun \"Run: \" -drun-display-format \"{name}\""),
-         desc='Run Launcher'),
+        lazy.spawn("rofi -show drun -config ~/.config/rofi/themes/dt-center.rasi -monitor -4 -display-drun \"Run: \" -drun-display-format \"{name}\""),
+        desc='Run Launcher'),
 
     Key([mod], "s",
         lazy.spawn("rofi -show power-menu -config ~/.config/rofi/themes/dt-centerS.rasi -monitor primary -modi power-menu:rofi-power-menu"),
-         desc='Run Power-menu'),
+        desc='Run Power-menu'),
+    Key([mod], "d",
+        lazy.spawn("dunstctl history-pop"), desc='Show dunst history'),
 
     Key([], "Print", lazy.spawn("screenshot"), desc="Take a screensht"),
     Key(["shift"], "Print", lazy.spawn("screenshot_select"), desc="Take a screensht with selection"),
@@ -62,7 +62,7 @@ keys = [
     Key([mod], "t", lazy.spawn("env LINES= COLUMNS= kitty -e rtorrent")),
     Key([mod], "q", lazy.spawn("qutebrowser")),
 
-    Key([mod], "space", lazy.next_screen(),desc="move focus to next screen"),
+    Key([mod], "space", lazy.next_screen(), desc="move focus to next screen"),
 
     Key([mod], "f", lazy.window.toggle_floating()),
     Key([mod], "m", lazy.layout.maximize()),
@@ -119,8 +119,8 @@ group_names = [(" 1 ", {'layout': 'monadtall'}),
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
 for i, (name, kwargs) in enumerate(group_names, 1):
-    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
-    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))         # Switch to another group
+    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))  # Send current window to another group
 
 layout_theme = {"border_width": 2,
                 "margin": 6,
@@ -150,113 +150,117 @@ barColor = (
         "#880000",
         "#cc0000"
         )
-def angle(x,y):
-    return widget.TextBox(barShape, foreground = barColor[x], background = barColor[y], fontsize = 34, width = 28)
+
+
+def angle(x, y):
+    return widget.TextBox(barShape, foreground=barColor[x], background=barColor[y], fontsize=34, width=28)
+
 
 def space(x):
-    return widget.TextBox(filled, foreground = barColor[x], fontsize = 32, width = 10, padding = 0)
+    return widget.TextBox(filled, foreground=barColor[x], fontsize=32, width=10, padding=0)
+
 
 screens = [
     Screen(
-        #wallpaper="~/Wallpapers/1636834139152.jpg",
+        # wallpaper="~/Wallpapers/1636834139152.jpg",
         wallpaper="~/Wallpapers/RenaRyuugu - Right.png",
         wallpaper_mode="fill",
         top=bar.Bar(
             [
                 widget.GroupBox(
-                       background = barColor[3],
-                       highlight_method = "block",
-                       inactive = "#ffaaaa",
-                       this_current_screen_border = barColor[2],
-                       this_screen_border = "#aa0000",
-                       rounded = False,
-                       other_current_screen_border = "#aa0000",
-                       other_screen_border = "#aa0000",
-                       urgent_alert_method = "line",
-                       urgent_border = barColor[0],
-                       urgent_text = "#ffffff",
-                       margin_x = 0,
-                       padding = 5,
-                       font = "Source Code Pro Regular"
+                       background=barColor[3],
+                       highlight_method="block",
+                       inactive="#ffaaaa",
+                       this_current_screen_border=barColor[2],
+                       this_screen_border="#aa0000",
+                       rounded=False,
+                       other_current_screen_border="#aa0000",
+                       other_screen_border="#aa0000",
+                       urgent_alert_method="line",
+                       urgent_border=barColor[0],
+                       urgent_text="#ffffff",
+                       margin_x=0,
+                       padding=5,
+                       font="Source Code Pro Regular"
                 ),
-                angle(0,3),
+                angle(0, 3),
                 space(0),
-                widget.WindowName(background = barColor[0]),
+                widget.WindowName(background=barColor[0]),
 
-                angle(3,0),
+                angle(3, 0),
                 space(3),
-                widget.CheckUpdates(no_update_string = "0", display_format = "{updates}", distro = "Arch_checkupdates", background = barColor[3], execute = "env LINES= COLUMNS= kitty -e sudo pacman -Syu"),
-                angle(0,3),
-                angle(3,0),
+                widget.CheckUpdates(no_update_string="0", display_format="{updates}", distro="Arch_checkupdates", background=barColor[3], execute="env LINES= COLUMNS= kitty -e sudo pacman -Syu"),
+                angle(0, 3),
+                angle(3, 0),
                 space(3),
-                widget.Battery(background = barColor[3]),
-                angle(0,3),
-                angle(3,0),
+                widget.Battery(background=barColor[3]),
+                angle(0, 3),
+                angle(3, 0),
                 space(3),
-                widget.Volume(step = 5, background = barColor[3], emoji = True, volume_app = "pavucontrol"),
-                widget.Volume(step = 5, background = barColor[3], volume_app = "pavucontrol"),
-                angle(0,3),
-                angle(3,0),
+                widget.Volume(step=5, background=barColor[3], emoji=True, volume_app="pavucontrol"),
+                widget.Volume(step=5, background=barColor[3], volume_app="pavucontrol"),
+                angle(0, 3),
+                angle(3, 0),
                 space(3),
-                widget.Clock(format=' %d %b, %a %H:%M', background = barColor[3]),
-                angle(0,3),
+                widget.Clock(format=' %d %b, %a %H:%M', background=barColor[3]),
+                angle(0, 3),
                 space(0),
                 widget.Systray(),
-                angle(3,0),
+                angle(3, 0),
                 space(3),
-                widget.CurrentLayoutIcon(background = barColor[3], padding = 5, scale = 0.8),
+                widget.CurrentLayoutIcon(background=barColor[3], padding=5, scale=0.8),
             ],
             20,
         ),
     ),
     Screen(
-        #bottom = bar.Bar([],20),
-        #wallpaper="~/Wallpapers/1636834139152.jpg",
+        # bottom = bar.Bar([],20),
+        # wallpaper="~/Wallpapers/1636834139152.jpg",
         wallpaper="~/Wallpapers/RenaRyuugu - Right.png",
         wallpaper_mode="fill",
         top=bar.Bar(
             [
                 widget.GroupBox(
-                       background = barColor[3],
-                       highlight_method = "block",
-                       inactive = "#ffaaaa",
-                       this_current_screen_border = barColor[2],
-                       this_screen_border = "#aa0000",
-                       rounded = False,
-                       other_current_screen_border = "#aa0000",
-                       other_screen_border = "#aa0000",
-                       urgent_alert_method = "line",
-                       urgent_border = barColor[0],
-                       urgent_text = "#ffffff",
-                       margin_x = 0,
-                       padding = 5,
-                       font = "Source Code Pro Regular"
+                       background=barColor[3],
+                       highlight_method="block",
+                       inactive="#ffaaaa",
+                       this_current_screen_border=barColor[2],
+                       this_screen_border="#aa0000",
+                       rounded=False,
+                       other_current_screen_border="#aa0000",
+                       other_screen_border="#aa0000",
+                       urgent_alert_method="line",
+                       urgent_border=barColor[0],
+                       urgent_text="#ffffff",
+                       margin_x=0,
+                       padding=5,
+                       font="Source Code Pro Regular"
                 ),
-                angle(0,3),
+                angle(0, 3),
                 space(0),
-                widget.WindowName(background = barColor[0]),
+                widget.WindowName(background=barColor[0]),
 
-                widget.School(barShape, foreground = barColor[3], background = barColor[0], fontsize = 34, width = 26, padding = 0),
-                widget.School(filled, foreground = barColor[3], background = barColor[0], fontsize = 32, width = 10, padding = 0),
-                widget.School(background = barColor[3]),
-                widget.School(barShape, foreground = barColor[0], background = barColor[3], fontsize = 34, width = 26, padding = 0),
+                widget.School(barShape, foreground=barColor[3], background=barColor[0], fontsize=34, width=26, padding=0),
+                widget.School(filled, foreground=barColor[3], background=barColor[0], fontsize=32, width=10, padding=0),
+                widget.School(background=barColor[3]),
+                widget.School(barShape, foreground=barColor[0], background=barColor[3], fontsize=34, width=26, padding=0),
 
-                angle(3,0),
+                angle(3, 0),
                 space(3),
-                widget.Battery(background = barColor[3]),
-                angle(0,3),
-                angle(3,0),
+                widget.Battery(background=barColor[3]),
+                angle(0, 3),
+                angle(3, 0),
                 space(3),
-                widget.Volume(step = 5, background = barColor[3], emoji = True, volume_app = "pavucontrol"),
-                widget.Volume(step = 5, background = barColor[3], volume_app = "pavucontrol"),
-                angle(0,3),
-                angle(3,0),
+                widget.Volume(step=5, background=barColor[3], emoji=True, volume_app="pavucontrol"),
+                widget.Volume(step=5, background=barColor[3], volume_app="pavucontrol"),
+                angle(0, 3),
+                angle(3, 0),
                 space(3),
-                widget.Clock(format=' %d %b, %a %H:%M', background = barColor[3]),
-                angle(0,3),
-                angle(3,0),
+                widget.Clock(format=' %d %b, %a %H:%M', background=barColor[3]),
+                angle(0, 3),
+                angle(3, 0),
                 space(3),
-                widget.CurrentLayoutIcon(background = barColor[3], padding = 5, scale = 0.8),
+                widget.CurrentLayoutIcon(background=barColor[3], padding=5, scale=0.8),
             ],
             20,
         ),
@@ -291,7 +295,7 @@ floating_layout = layout.Floating(**layout_theme, float_rules=[
     Match(wm_class='feh'),
     Match(wm_class='qemu'),
     Match(wm_class='gimp'),
-    Match(wm_class='Qt5PasswordManager')
+    Match(wm_class='qpassword_manager')
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
@@ -305,4 +309,3 @@ focus_on_window_activation = "smart"
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-

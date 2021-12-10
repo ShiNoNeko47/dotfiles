@@ -1,3 +1,0 @@
-fortune
-trap 'export LINES= COLUMNS=' DEBUG
-alias dotdrop='/home/nikola/Documents/GitHub/dotfiles/dotdrop.sh --cfg=/home/nikola/Documents/GitHub/dotfiles/config.yaml'

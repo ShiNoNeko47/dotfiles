@@ -1917,7 +1917,8 @@ c.url.searchengines = {
         'wiki': 'https://en.wikipedia.org/wiki/{}',
         'yt': 'https://youtube.com/results?search_query={}',
         'google': 'https://www.google.com/search?q={}',
-        'ebay': 'https://www.ebay.com/sch/i.html?&_nkw={}'
+        'ebay': 'https://www.ebay.com/sch/i.html?&_nkw={}',
+        'git': 'https://github.com/search?q={}',
         }
 
 ## Page(s) to open at the start.

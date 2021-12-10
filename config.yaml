@@ -3,16 +3,6 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
-  f_profile:
-    src: profile
-    dst: ~/.profile
-  f_vimrc:
-    src: vimrc
-    dst: ~/.vimrc
-    chmod: '755'
-  f_rena.vim:
-    src: vim/colors/Rena.vim
-    dst: ~/.vim/colors/Rena.vim
   f_xinitrc:
     src: xinitrc
     dst: ~/.xinitrc
@@ -26,9 +16,6 @@ dotfiles:
     src: rtorrent.rc
     dst: ~/.rtorrent.rc
     chmod: '755'
-  f_bashrc:
-    src: bashrc
-    dst: ~/.bashrc
   f_weather:
     src: local/bin/weather
     dst: ~/.local/bin/weather
@@ -49,12 +36,6 @@ dotfiles:
     src: local/bin/public_ip
     dst: ~/.local/bin/public_ip
     chmod: '755'
-  f_bookmarks:
-    src: local/share/ranger/bookmarks
-    dst: ~/.local/share/ranger/bookmarks
-  f_qt5_passwordmanager.desktop:
-    src: local/share/applications/Qt5_PasswordManager.desktop
-    dst: ~/.local/share/applications/Qt5_PasswordManager.desktop
   d_autorandr:
     src: config/autorandr
     dst: ~/.config/autorandr
@@ -141,21 +122,15 @@ dotfiles:
 profiles:
   Arch:
     dotfiles:
-    - f_profile
-    - f_vimrc
-    - f_rena.vim
     - f_xinitrc
     - f_xresources
     - f_xmodmap
     - f_rtorrent.rc
-    - f_bashrc
     - f_weather
     - f_toggle_picom
     - f_screenshot
     - f_screenshot_select
     - f_public_ip
-    - f_bookmarks
-    - f_qt5_passwordmanager.desktop
     - d_autorandr
     - d_cava
     - d_dunst
