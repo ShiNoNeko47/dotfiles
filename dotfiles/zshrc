@@ -26,7 +26,7 @@ function zle-line-init zle-keymap-select {
         (main|viins) mode="I" ;;
         (*)          mode="I" ;;
     esac
-        PS1="
+        PS1="  ${VIRTUAL_ENV:t}
  %F{15}%~ %F{202}$mode %F{15}>>%f "
     zle reset-prompt
 }

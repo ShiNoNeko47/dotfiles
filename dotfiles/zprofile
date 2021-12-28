@@ -6,6 +6,9 @@ export TERMINAL=kitty
 export SHELL=/usr/bin/zsh
 export QT_QPA_PLATFORMTHEME=qt5ct
 export STEAM_RUNTIME=0
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export WALLPAPER=$(cat ~/Wallpapers/current_wallpaper)
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx

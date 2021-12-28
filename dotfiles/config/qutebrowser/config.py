@@ -483,7 +483,7 @@ c.colors.hints.match.fg = '#d55527'
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).
 ## Type: QtColor
-# c.colors.webpage.bg = 'white'
+c.colors.webpage.bg = 'black'
 
 ## Which algorithm to use for modifying how colors are rendered with
 ## darkmode. The `lightness-cielab` value was added with QtWebEngine 5.14
@@ -670,6 +670,7 @@ c.confirm_quit = ['downloads']
 ## URL-decoding it).
 ## Type: List of Url
 # c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
+c.content.blocking.adblock.lists = []
 
 ## Enable the ad/host blocker
 ## Type: Bool
