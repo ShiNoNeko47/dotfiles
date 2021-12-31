@@ -119,6 +119,9 @@ dotfiles:
   f_qpassword_manager.desktop:
     src: local/share/applications/qpassword_manager.desktop
     dst: ~/.local/share/applications/qpassword_manager.desktop
+  d_wallpapers:
+    src: Wallpapers
+    dst: ~/Wallpapers
 profiles:
   Arch:
     dotfiles:
@@ -157,3 +160,4 @@ profiles:
     - f_mimeapps.list
     - f_clear-torents
     - f_qpassword_manager.desktop
+    - d_wallpapers

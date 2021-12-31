@@ -135,26 +135,15 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     Key([mod], "p", lazy.spawn("toggle_picom")),
 ]
-group_names = [
-    (" 1 ", {"layout": "monadtall"}),
-    (" 2 ", {"layout": "monadtall"}),
-    (" 3 ", {"layout": "monadtall"}),
-    (" 4 ", {"layout": "monadtall"}),
-    (" 5 ", {"layout": "monadtall"}),
-    (" 6 ", {"layout": "monadtall"}),
-    (" 7 ", {"layout": "monadtall"}),
-    (" 8 ", {"layout": "monadtall"}),
-    (" 9 ", {"layout": "monadtall"}),
-]
 
-groups = [Group(name, **kwargs) for name, kwargs in group_names]
+groups = [Group(f" {i} ") for i in "123456789"]
 
-for i, (name, kwargs) in enumerate(group_names, 1):
+for i in groups:
     keys.append(
-        Key([mod], str(i), lazy.group[name].toscreen())
+        Key([mod], str(i.name)[1], lazy.group[i.name].toscreen())
     )  # Switch to another group
     keys.append(
-        Key([mod, "shift"], str(i), lazy.window.togroup(name))
+        Key([mod, "shift"], str(i.name)[1], lazy.window.togroup(i.name))
     )  # Send current window to another group
 
 layout_theme = {

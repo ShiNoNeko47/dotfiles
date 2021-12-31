@@ -8,8 +8,12 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export STEAM_RUNTIME=0
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+export XKB_DEFAULT_LAYOUT="hr"
+export XKB_DEFAULT_OPTIONS="caps:none"
+
 export WALLPAPER=$(cat ~/Wallpapers/current_wallpaper)
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  # exec qtile start -b wayland
   exec startx
 fi

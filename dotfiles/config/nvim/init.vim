@@ -1,4 +1,3 @@
-set nocp
 set ruler
 set showcmd
 set encoding=utf-8
@@ -13,7 +12,7 @@ set incsearch
 set expandtab
 set splitbelow splitright
 set backspace=indent,eol,start
-set mouse=a
+set mouse=nv
 set shortmess=at
 set clipboard=unnamedplus
 
@@ -45,8 +44,8 @@ nnoremap <leader>p :LLPStartPreview<CR>
 let g:pymode_rope_complete_on_dot = 0
 
 let g:UltiSnipsExpandTrigger="<leader>ss"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 let g:arduino_serial_cmd = 'picocom {port} -b {baud} -l'
 nnoremap <leader>av <cmd>ArduinoVerify<CR>
