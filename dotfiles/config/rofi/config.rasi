@@ -1,1 +1,61 @@
-configuration {@import "~/.cache/wal/colors-rofi-dark"}
+* {
+    background-color:       #101010;
+    border-color:           #ff0000;
+    text-color:             #dce0ec;
+    font:                   "Fira Code 9";
+}
+window {
+    border:                 1;
+    padding:                5;
+    background-color:       @background-color;
+    children:               [ entry, listview ];
+}
+entry {
+    height:                 20px;
+    expand:                 false;
+    width:                  10em;
+    background-color:       @background-color;
+    text-color:             @text-color;
+    border:                 0;
+}
+listview{
+    fixed-height:           0;
+    dynamic:                true;
+    border:                 1px solid 0px 0px;
+    border-color:           @border-color;
+    spacing:                2px;
+    scrollbar:              false;
+    padding:                2px 0px 0px ;
+}
+message {
+    border:                 1px dash 0px 0px;
+    padding:                1px;
+    background-color:       #101010;
+    text-color:             @text-color;
+}
+element normal normal,
+element alternate normal {
+    border:                 0;
+    padding:                1px;
+    background-color:       @background-color;
+    text-color:             @text-color;
+}
+element selected normal {
+    border:                 0;
+    padding:                1px;
+    background-color:       @text-color;
+    text-color:             @background-color;
+}
+element alternate active,
+element normal active {
+    border:                 1px;
+    padding:                0;
+    background-color:       @background-color;
+    text-color:             @text-color;
+}
+element selected active {
+    border:                 1px;
+    padding:                0;
+    background-color:       @text-color;
+    text-color:             @background-color;
+}

@@ -57,13 +57,6 @@ dotfiles:
   d_picom:
     src: config/picom
     dst: ~/.config/picom
-  f_autostart.sh:
-    src: config/qtile/autostart.sh
-    dst: ~/.config/qtile/autostart.sh
-    chmod: '755'
-  f_config.py:
-    src: config/qtile/config.py
-    dst: ~/.config/qtile/config.py
   d_qutebrowser:
     src: config/qutebrowser
     dst: ~/.config/qutebrowser
@@ -80,9 +73,6 @@ dotfiles:
   d_xorg.conf.d:
     src: etc/X11/xorg.conf.d
     dst: /etc/X11/xorg.conf.d
-  f_lxpolkit.desktop:
-    src: etc/xdg/autostart/lxpolkit.desktop
-    dst: /etc/xdg/autostart/lxpolkit.desktop
   d_grub_theme_higurashi:
     src: boot/grub/themes/grub_theme_higurashi
     dst: /boot/grub/themes/grub_theme_higurashi
@@ -95,13 +85,6 @@ dotfiles:
   f_zprofile:
     src: zprofile
     dst: ~/.zprofile
-  f_init.vim:
-    src: config/nvim/init.vim
-    dst: ~/.config/nvim/init.vim
-    chmod: '755'
-  d_colors:
-    src: config/nvim/colors
-    dst: ~/.config/nvim/colors
   d_calcurse:
     src: config/calcurse
     dst: ~/.config/calcurse
@@ -122,6 +105,18 @@ dotfiles:
   d_wallpapers:
     src: Wallpapers
     dst: ~/Wallpapers
+  d_nvim:
+    src: config/nvim
+    dst: ~/.config/nvim
+  d_qtile:
+    src: config/qtile
+    dst: ~/.config/qtile
+  d_glava:
+    src: config/glava
+    dst: ~/.config/glava
+  d_oomox:
+    src: config/oomox
+    dst: ~/.config/oomox
 profiles:
   Arch:
     dotfiles:
@@ -141,23 +136,22 @@ profiles:
     - d_maestral
     - d_neofetch
     - d_picom
-    - f_autostart.sh
-    - f_config.py
     - d_qutebrowser
     - d_ranger
     - d_rofi
     - d_zathura
     - d_xorg.conf.d
-    - f_lxpolkit.desktop
     - d_grub_theme_higurashi
     - d_mutt
     - f_zshrc
     - f_zprofile
-    - f_init.vim
-    - d_colors
     - d_calcurse
     - f_tooltip-gtk2.qss
     - f_mimeapps.list
     - f_clear-torents
     - f_qpassword_manager.desktop
     - d_wallpapers
+    - d_nvim
+    - d_qtile
+    - d_glava
+    - d_oomox

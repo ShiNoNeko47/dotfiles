@@ -60,18 +60,3 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
-
-class db(Command): #using maestral as dropbox client
-    def execute(self):
-        command = 'maestral'
-        for arg in self.args[1:]:
-            command += ' ' + arg
-        self.fm.execute_command(command)
-
-    def tab(self, tabnum):
-        actions = ['start', 'stop', 'pause', 'resume', 'sharelink create']
-        if self.arg(1) + ' ' + self.arg(2) == actions[4]:
-            return self._tab_directory_content(3)
-        return ('db ' + action
-                for action in actions
-                if action.startswith(self.arg(1)))

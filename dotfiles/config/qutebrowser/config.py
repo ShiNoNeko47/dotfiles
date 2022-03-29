@@ -483,7 +483,7 @@ c.colors.hints.match.fg = '#d55527'
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).
 ## Type: QtColor
-c.colors.webpage.bg = 'black'
+c.colors.webpage.bg = 'white'
 
 ## Which algorithm to use for modifying how colors are rendered with
 ## darkmode. The `lightness-cielab` value was added with QtWebEngine 5.14
@@ -955,7 +955,7 @@ c.content.notifications.enabled = 'ask'
 ## still be downloaded by clicking the download button in the pdf.js
 ## viewer.
 ## Type: Bool
-# c.content.pdfjs = True
+c.content.pdfjs = True
 
 ## Allow websites to request persistent storage quota via
 ## `navigator.webkitPersistentStorage.requestQuota`.
@@ -1911,7 +1911,7 @@ c.url.open_base_url = False
 ## qutebrowser`.
 ## Type: Dict
 c.url.searchengines = {
-        'DEFAULT': 'https://duckduckgo.com/?q={}',
+        'DEFAULT': 'https://duckduckgo.com//?q={}',
         'aw': 'https://wiki.archlinux.org/?search={}',
         're': 'https://reddit.com/r/{}',
         'ub': 'https://urbandictionary.com/define.php?term={}',
@@ -1966,6 +1966,9 @@ c.zoom.mouse_divider = 512
 # c.zoom.text_only = False
 
 ## Bindings for normal mode
+config.bind(';pt', 'set content.proxy socks://localhost:9050/')
+config.bind(';pn', 'set content.proxy none')
+config.bind(';ps', 'set content.proxy system')
 # config.bind("'", 'mode-enter jump_mark')
 # config.bind('+', 'zoom-in')
 # config.bind('-', 'zoom-out')

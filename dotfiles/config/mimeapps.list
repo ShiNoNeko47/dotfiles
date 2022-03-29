@@ -1,4 +1,3 @@
-
 [Default Applications]
 text/html=org.qutebrowser.qutebrowser.desktop
 x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
@@ -19,3 +18,4 @@ text/x-c++src=Neovim.desktop
 text/plain=Neovim.desktop
 text/tcl=Neovim.desktop
 text/x-c++hdr=Neovim.desktop
+x-scheme-handler/heroic=heroic.desktop

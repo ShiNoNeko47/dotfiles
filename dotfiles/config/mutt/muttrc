@@ -15,7 +15,8 @@ auto_view text/html
 
 set editor = vim
 set sendmail="/usr/bin/msmtp"
-set pager = less
+set markers = no
+# set pager = less
 # -*-muttrc-*-
 
 # Palette for use with the Linux console.  Black background.

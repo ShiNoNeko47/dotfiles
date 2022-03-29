@@ -33,3 +33,4 @@ fi
 # start some nice programs
 
 exec qtile start
+# exec startplasma-x11

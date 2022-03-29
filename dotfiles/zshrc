@@ -8,7 +8,7 @@ bindkey -v
 unset LINES
 unset COLUMNS
 
-fortune
+# fortune
 alias dotdrop='/home/nikola/Documents/GitHub/dotfiles/dotdrop.sh --cfg=/home/nikola/Documents/GitHub/dotfiles/config.yaml'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
