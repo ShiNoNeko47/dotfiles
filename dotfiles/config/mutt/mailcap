@@ -1,2 +1,0 @@
-application/pdf; zathura -; copiousoutput;
-text/html; elinks -dump ; copiousoutput;

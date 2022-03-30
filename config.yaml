@@ -39,18 +39,12 @@ dotfiles:
   d_autorandr:
     src: config/autorandr
     dst: ~/.config/autorandr
-  d_cava:
-    src: config/cava
-    dst: ~/.config/cava
   d_dunst:
     src: config/dunst
     dst: ~/.config/dunst
   f_kitty.conf:
     src: config/kitty/kitty.conf
     dst: ~/.config/kitty/kitty.conf
-  d_maestral:
-    src: config/maestral
-    dst: ~/.config/maestral
   d_neofetch:
     src: config/neofetch
     dst: ~/.config/neofetch
@@ -76,9 +70,6 @@ dotfiles:
   d_grub_theme_higurashi:
     src: boot/grub/themes/grub_theme_higurashi
     dst: /boot/grub/themes/grub_theme_higurashi
-  d_mutt:
-    src: config/mutt
-    dst: ~/.config/mutt
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
@@ -130,10 +121,8 @@ profiles:
     - f_screenshot_select
     - f_public_ip
     - d_autorandr
-    - d_cava
     - d_dunst
     - f_kitty.conf
-    - d_maestral
     - d_neofetch
     - d_picom
     - d_qutebrowser
@@ -142,7 +131,6 @@ profiles:
     - d_zathura
     - d_xorg.conf.d
     - d_grub_theme_higurashi
-    - d_mutt
     - f_zshrc
     - f_zprofile
     - d_calcurse
