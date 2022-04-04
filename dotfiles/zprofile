@@ -13,6 +13,8 @@ export XKB_DEFAULT_OPTIONS="caps:none"
 
 export WALLPAPER=$(cat ~/Wallpapers/current_wallpaper)
 
+alias startx="startx ~/.xinitrc"
+
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   # exec qtile start -b wayland
   exec startx

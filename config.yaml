@@ -6,6 +6,7 @@ dotfiles:
   f_xinitrc:
     src: xinitrc
     dst: ~/.xinitrc
+    chmod: '755'
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
