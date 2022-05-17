@@ -32,5 +32,10 @@ fi
 
 # start some nice programs
 
-exec qtile start
-# exec startplasma-x11
+session="${2:-qtile}"
+
+case $session in
+	qtile	) exec qtile start;;
+	steam	) exec steamos-session;;
+	*		) exec $2;;
+esac

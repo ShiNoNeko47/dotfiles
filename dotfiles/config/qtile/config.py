@@ -65,7 +65,8 @@ keys = [
     Key(
         [mod, "shift"],
         "Return",
-        lazy.spawn('rofi -show drun -monitor -4 -drun-display-format "{name}"'),
+        lazy.spawn(
+            'rofi -show drun -monitor -4 -drun-display-format "{name}"'),
         desc="Run Launcher",
     ),
     Key(
@@ -101,7 +102,8 @@ keys = [
     # Switch between windows in current stack pane
     Key([mod], "h", lazy.layout.left(), desc="Switch left in current stack "),
     Key([mod], "l", lazy.layout.right(), desc="Switch right in current stack "),
-    Key([mod], "j", lazy.group.next_window(), desc="Switch to next window in group"),
+    Key([mod], "j", lazy.group.next_window(),
+        desc="Switch to next window in group"),
     Key(
         [mod], "k", lazy.group.prev_window(), desc="Switch to previous window in group"
     ),
@@ -224,11 +226,11 @@ screens = [
                 angle(3, 0),
                 space(3),
                 widget.CheckUpdates(
-                    no_update_string="0",
-                    display_format="{updates}",
+                    no_update_string="Updates: 0",
+                    display_format="Updates: {updates}",
                     distro="Arch_checkupdates",
                     background=barColor[3],
-                    execute="env LINES= COLUMNS= kitty -e sudo pacman -Syu",
+                    execute="env LINES= COLUMNS= kitty -e paru",
                 ),
                 angle(0, 3),
                 # angle(3, 0),
@@ -251,13 +253,15 @@ screens = [
                 angle(0, 3),
                 angle(3, 0),
                 space(3),
-                widget.Clock(format=" %d %b, %a %H:%M", background=barColor[3]),
+                widget.Clock(format=" %d %b, %a %H:%M",
+                             background=barColor[3]),
                 angle(0, 3),
                 space(0),
                 widget.Systray(),
                 angle(3, 0),
                 space(3),
-                widget.CurrentLayoutIcon(background=barColor[3], padding=5, scale=0.8),
+                widget.CurrentLayoutIcon(
+                    background=barColor[3], padding=5, scale=0.8),
             ],
             20,
         ),
@@ -311,11 +315,13 @@ screens = [
                 angle(0, 3),
                 angle(3, 0),
                 space(3),
-                widget.Clock(format=" %d %b, %a %H:%M", background=barColor[3]),
+                widget.Clock(format=" %d %b, %a %H:%M",
+                             background=barColor[3]),
                 angle(0, 3),
                 angle(3, 0),
                 space(3),
-                widget.CurrentLayoutIcon(background=barColor[3], padding=5, scale=0.8),
+                widget.CurrentLayoutIcon(
+                    background=barColor[3], padding=5, scale=0.8),
             ],
             20,
         ),

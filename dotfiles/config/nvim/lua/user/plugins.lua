@@ -90,6 +90,7 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
 	use("junegunn/gv.vim")
+	use("aperezdc/vim-template")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

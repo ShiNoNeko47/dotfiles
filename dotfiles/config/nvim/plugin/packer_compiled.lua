@@ -234,8 +234,13 @@ _G.packer_plugins = {
     path = "/home/nikola/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
+  ["vim-template"] = {
+    loaded = true,
+    path = "/home/nikola/.local/share/nvim/site/pack/packer/start/vim-template",
+    url = "https://github.com/aperezdc/vim-template"
+  },
   vimtex = {
-    config = { "\27LJ\2\nø\1\0\0\2\0\n\0\0206\0\0\0)\1\1\0=\1\1\0006\0\0\0009\0\2\0'\1\4\0=\1\3\0006\0\0\0009\0\2\0)\1\1\0=\1\5\0006\0\0\0009\0\2\0'\1\a\0=\1\6\0006\0\0\0009\0\2\0005\1\t\0=\1\b\0K\0\1\0\1\0\1\14build_dir,/home/nikola/Documents/vimtex_build_dir\28vimtex_compiler_latexmk\fzathura\23vimtex_view_mathod\24tex_comment_nospell\nabdmg\16tex_conceal\6g\17conceallevel\bvim\0" },
+    config = { "\27LJ\2\n½\1\0\0\2\0\a\0\r6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0'\1\4\0=\1\3\0006\0\0\0009\0\1\0005\1\6\0=\1\5\0K\0\1\0\1\0\1\14build_dir,/home/nikola/Documents/vimtex_build_dir\28vimtex_compiler_latexmk\fzathura\23vimtex_view_mathod\24tex_comment_nospell\6g\bvim\0" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
