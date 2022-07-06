@@ -32,10 +32,10 @@ fi
 
 # start some nice programs
 
-session="${2:-qtile}"
+session="${1:-qtile}"
 
 case $session in
 	qtile	) exec qtile start;;
 	steam	) exec steamos-session;;
-	*		) exec $2;;
+	*		) exec $1;;
 esac

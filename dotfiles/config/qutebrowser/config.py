@@ -1965,6 +1965,11 @@ c.zoom.mouse_divider = 512
 ## Type: Bool
 # c.zoom.text_only = False
 
+config.bind(';t', 'hint userscript link translate')
+config.bind(';T', 'hint userscript all translate --text')
+config.bind('<Ctrl+T>', 'spawn --userscript translate')
+config.bind('<Ctrl+Shift+T>', 'spawn --userscript translate --text')
+
 ## Bindings for normal mode
 config.bind(';pt', 'set content.proxy socks://localhost:9050/')
 config.bind(';pn', 'set content.proxy none')

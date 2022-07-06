@@ -61,19 +61,6 @@ return packer.startup(function(use)
 	use("junegunn/vim-slash")
 	use("jiangmiao/auto-pairs")
 	use("tpope/vim-surround")
-	use({
-		"lervag/vimtex",
-		opt = true,
-		config = function()
-			vim.g.tex_comment_nospell = 1
-			vim.g.vimtex_view_mathod = "zathura"
-			vim.g.vimtex_compiler_latexmk = {
-				build_dir = "/home/nikola/Documents/vimtex_build_dir",
-			}
-		end,
-		ft = "tex",
-	})
-	use("mhinz/neovim-remote")
 	use("zivyangll/git-blame.vim")
 	use("stevearc/vim-arduino")
 	use({ "turbio/bracey.vim", run = "npm install --prefix server" })
@@ -91,6 +78,9 @@ return packer.startup(function(use)
 	use("tpope/vim-rhubarb")
 	use("junegunn/gv.vim")
 	use("aperezdc/vim-template")
+	use("Konfekt/FastFold")
+	use("matze/vim-tex-fold")
+	use("nvim-treesitter/nvim-treesitter")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

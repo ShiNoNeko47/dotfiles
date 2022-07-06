@@ -105,7 +105,7 @@ dht.mode.set = on
 
 # UDP port to use for DHT.
 #
-#dht.port.set = 6881
+dht.port.set = 6881
 
 # Enable peer exchange (for torrents not marked private).
 #

@@ -63,6 +63,13 @@ mod = "mod4"
 
 keys = [
     Key(
+        [mod],
+        "c",
+        lazy.spawn(
+            'rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n \'{result}\' | xclip"'),
+        desc="Run Calculator",
+    ),
+    Key(
         [mod, "shift"],
         "Return",
         lazy.spawn(
@@ -92,7 +99,7 @@ keys = [
         desc="Take a screensht with selection",
     ),
     Key([mod], "r", lazy.spawn("env LINES= COLUMNS= kitty -e ranger")),
-    Key([mod], "e", lazy.spawn("env LINES= COLUMNS= kitty -e mutt")),
+    Key([mod], "e", lazy.spawn("env LINES= COLUMNS= kitty -e neomutt")),
     Key([mod], "t", lazy.spawn("env LINES= COLUMNS= kitty -e rtorrent")),
     Key([mod], "q", lazy.spawn("qutebrowser")),
     Key([mod], "space", lazy.next_screen(), desc="move focus to next screen"),
@@ -145,14 +152,14 @@ keys = [
     Key([mod], "p", lazy.spawn("toggle_picom")),
 ]
 
-groups = [Group(f" {i} ") for i in "123456789"]
+groups = [Group(f" {i} ") for i in "一二三四五六七八九"]
 
-for i in groups:
+for i, j in enumerate(groups):
     keys.append(
-        Key([mod], str(i.name)[1], lazy.group[i.name].toscreen())
+        Key([mod], str(i + 1), lazy.group[j.name].toscreen())
     )  # Switch to another group
     keys.append(
-        Key([mod, "shift"], str(i.name)[1], lazy.window.togroup(i.name))
+        Key([mod, "shift"], str(i + 1), lazy.window.togroup(j.name))
     )  # Send current window to another group
 
 layout_theme = {

@@ -5,9 +5,9 @@ terminal-width: "100%"
 terminal-font: "Unifont Regular 16"
 + boot_menu {
     left = 60%
-    top = 50%-150
+    top = 50%-180
     width = 800
-    height = 300
+    height = 360
     item_font = "Fira Code Regular 32"
     item_color = "#ffffff"
     selected_item_font = "Fira Code Regular 32"

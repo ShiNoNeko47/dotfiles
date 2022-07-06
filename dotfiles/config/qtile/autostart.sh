@@ -1,5 +1,6 @@
 #!/bin/sh
-lxsession &
+# lxsession &
+lxpolkit &
 numlockx &
 picom --experimental-backends -b &
 xset s off &
@@ -7,7 +8,8 @@ nm-applet &
 wal --backend colorthief -n -i Wallpapers/RenaRyuugu.png &
 udiskie -s &
 blueman-applet &
-rclone mount Zavrsni_rad:Nikola_Brezovec-zavrsni Documents/zavrsni_rad --log-file=Documents/rclonemount.txt --log-level INFO
+autorandr -c &
+system-config-printer-applet &
 # feh --bg-scale ${WALLPAPER}
 # discord &
 # protonvpn-applet &

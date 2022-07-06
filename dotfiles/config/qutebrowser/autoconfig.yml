@@ -29,6 +29,8 @@ settings:
     global: auto
   content.desktop_capture:
     https://meet.google.com: true
+  content.javascript.alert:
+    global: true
   content.javascript.can_access_clipboard:
     global: true
   content.media.audio_capture:
