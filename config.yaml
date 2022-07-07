@@ -52,10 +52,6 @@ dotfiles:
   d_picom:
     src: config/picom
     dst: ~/.config/picom
-  d_qutebrowser:
-    src: config/qutebrowser
-    dst: ~/.config/qutebrowser
-    chmod: '700'
   d_ranger:
     src: config/ranger
     dst: ~/.config/ranger
@@ -97,9 +93,6 @@ dotfiles:
   d_wallpapers:
     src: Wallpapers
     dst: ~/Wallpapers
-  d_nvim:
-    src: config/nvim
-    dst: ~/.config/nvim
   d_qtile:
     src: config/qtile
     dst: ~/.config/qtile
@@ -109,6 +102,22 @@ dotfiles:
   d_oomox:
     src: config/oomox
     dst: ~/.config/oomox
+  d_colors:
+    src: config/nvim/colors
+    dst: ~/.config/nvim/colors
+  f_init.lua:
+    src: config/nvim/init.lua
+    dst: ~/.config/nvim/init.lua
+  d_lua:
+    src: config/nvim/lua
+    dst: ~/.config/nvim/lua
+  f_config.py:
+    src: config/qutebrowser/config.py
+    dst: ~/.config/qutebrowser/config.py
+  f_quickmarks:
+    src: config/qutebrowser/quickmarks
+    dst: ~/.config/qutebrowser/quickmarks
+    chmod: '755'
 profiles:
   Arch:
     dotfiles:
@@ -126,7 +135,6 @@ profiles:
     - f_kitty.conf
     - d_neofetch
     - d_picom
-    - d_qutebrowser
     - d_ranger
     - d_rofi
     - d_zathura
@@ -140,7 +148,11 @@ profiles:
     - f_clear-torents
     - f_qpassword_manager.desktop
     - d_wallpapers
-    - d_nvim
     - d_qtile
     - d_glava
     - d_oomox
+    - d_colors
+    - f_init.lua
+    - d_lua
+    - f_config.py
+    - f_quickmarks
