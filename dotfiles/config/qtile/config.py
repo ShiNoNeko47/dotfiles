@@ -71,7 +71,7 @@ keys = [
     ),
     Key(
         [mod, "shift"],
-        "Return",
+        "slash",
         lazy.spawn(
             'rofi -show drun -monitor -4 -drun-display-format "{name}"'),
         desc="Run Launcher",
@@ -143,7 +143,7 @@ keys = [
         lazy.layout.shuffle_up(),
         desc="Move window up in current stack ",
     ),
-    Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
+    Key([mod], "slash", lazy.spawn("kitty"), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
