@@ -90,9 +90,6 @@ dotfiles:
   f_qpassword_manager.desktop:
     src: local/share/applications/qpassword_manager.desktop
     dst: ~/.local/share/applications/qpassword_manager.desktop
-  d_wallpapers:
-    src: Wallpapers
-    dst: ~/Wallpapers
   d_qtile:
     src: config/qtile
     dst: ~/.config/qtile
@@ -118,6 +115,12 @@ dotfiles:
     src: config/qutebrowser/quickmarks
     dst: ~/.config/qutebrowser/quickmarks
     chmod: '755'
+  f_ryuuguurena.png:
+    src: Wallpapers/RyuuguuRena.png
+    dst: ~/Wallpapers/RyuuguuRena.png
+  f_current_wallpaper:
+    src: Wallpapers/current_wallpaper
+    dst: ~/Wallpapers/current_wallpaper
 profiles:
   Arch:
     dotfiles:
@@ -147,7 +150,6 @@ profiles:
     - f_mimeapps.list
     - f_clear-torents
     - f_qpassword_manager.desktop
-    - d_wallpapers
     - d_qtile
     - d_glava
     - d_oomox
@@ -156,3 +158,5 @@ profiles:
     - d_lua
     - f_config.py
     - f_quickmarks
+    - f_ryuuguurena.png
+    - f_current_wallpaper
