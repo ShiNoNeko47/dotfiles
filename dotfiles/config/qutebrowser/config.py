@@ -504,7 +504,7 @@ c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 # `colors.webpage.darkmode.threshold.background` to 205.  - "With
 # selective inversion of everything": Combines the two variants   above.
 ## Type: Bool
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 # Render all colors as grayscale. This only has an effect when
 # `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
@@ -1232,7 +1232,7 @@ c.fonts.web.size.minimum_logical = 6
 # - unique-match: Auto-follow whenever there is a unique non-empty match in either the hint string (word mode) or filter (number mode).
 # - full-match: Follow the hint when the user typed the whole hint (letter, word or number mode) or the element's text (only in number mode).
 # - never: The user will always need to press Enter to follow a hint.
-c.hints.auto_follow = 'unique-match'
+c.hints.auto_follow = 'full-match'
 
 # Duration (in milliseconds) to ignore normal-mode key bindings after a
 # successful auto-follow.
@@ -1328,7 +1328,7 @@ c.input.escape_quits_reporter = True
 # - all: Forward all unbound keys.
 # - auto: Forward unbound non-alphanumeric keys.
 # - none: Don't forward any keys.
-c.input.forward_unbound_keys = 'none'
+c.input.forward_unbound_keys = 'auto'
 
 # Enter insert mode if an editable element is clicked.
 ## Type: Bool

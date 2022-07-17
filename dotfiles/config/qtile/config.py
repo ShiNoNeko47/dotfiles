@@ -91,6 +91,7 @@ keys = [
         desc="alt tab",
     ),
     Key([mod], "d", lazy.spawn("dunstctl history-pop"), desc="Show dunst history"),
+    Key([mod, "shift"], "d", lazy.spawn("dunstctl close"), desc="Close dunst history"),
     Key([], "Print", lazy.spawn("screenshot"), desc="Take a screensht"),
     Key(
         ["shift"],

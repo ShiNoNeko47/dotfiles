@@ -10,6 +10,8 @@ udiskie -s &
 blueman-applet &
 autorandr -c &
 system-config-printer-applet &
+calcurse --daemon
+notify-send "$(calcurse -a)"
 # feh --bg-scale ${WALLPAPER}
 # discord &
 # protonvpn-applet &
