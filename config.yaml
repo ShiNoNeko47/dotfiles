@@ -93,9 +93,6 @@ dotfiles:
   d_qtile:
     src: config/qtile
     dst: ~/.config/qtile
-  d_glava:
-    src: config/glava
-    dst: ~/.config/glava
   d_oomox:
     src: config/oomox
     dst: ~/.config/oomox
@@ -151,7 +148,6 @@ profiles:
     - f_clear-torents
     - f_qpassword_manager.desktop
     - d_qtile
-    - d_glava
     - d_oomox
     - d_colors
     - f_init.lua
