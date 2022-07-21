@@ -81,6 +81,14 @@ return packer.startup(function(use)
 	use("Konfekt/FastFold")
 	use("matze/vim-tex-fold")
 	use("nvim-treesitter/nvim-treesitter")
+	use("arjunmahishi/run-code.nvim")
+	use("plasticboy/vim-markdown")
+	use("elzr/vim-json")
+	use({"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
