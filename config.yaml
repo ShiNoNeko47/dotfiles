@@ -46,9 +46,6 @@ dotfiles:
   f_kitty.conf:
     src: config/kitty/kitty.conf
     dst: ~/.config/kitty/kitty.conf
-  d_neofetch:
-    src: config/neofetch
-    dst: ~/.config/neofetch
   d_picom:
     src: config/picom
     dst: ~/.config/picom
@@ -133,7 +130,6 @@ profiles:
     - d_autorandr
     - d_dunst
     - f_kitty.conf
-    - d_neofetch
     - d_picom
     - d_ranger
     - d_rofi

@@ -27,7 +27,7 @@
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, qtile
-from libqtile.config import Click, Drag, Group, Key, Screen, Match
+from libqtile.config import Click, Drag, Group, ScratchPad, DropDown, Key, Screen, Match
 from libqtile.lazy import lazy
 
 import os
@@ -91,7 +91,8 @@ keys = [
         desc="alt tab",
     ),
     Key([mod], "d", lazy.spawn("dunstctl history-pop"), desc="Show dunst history"),
-    Key([mod, "shift"], "d", lazy.spawn("dunstctl close"), desc="Close dunst history"),
+    Key([mod, "shift"], "d", lazy.spawn(
+        "dunstctl close"), desc="Close dunst history"),
     Key([], "Print", lazy.spawn("screenshot"), desc="Take a screensht"),
     Key(
         ["shift"],
@@ -162,6 +163,19 @@ for i, j in enumerate(groups):
     keys.append(
         Key([mod, "shift"], str(i + 1), lazy.window.togroup(j.name))
     )  # Send current window to another group
+
+groups.append(ScratchPad("scratchpad", [
+    DropDown("kitty", "kitty",
+             x=0.1, y=0.1, width=0.8, height=0.8,
+             on_focus_lost_hide=True),
+    DropDown("qtile shell", "kitty -e qtile shell",
+             x=0.1, y=0.1, width=0.8, height=0.8,
+             on_focus_lost_hide=True)]),)
+
+keys.append(
+    Key([], 'F1', lazy.group['scratchpad'].dropdown_toggle('kitty')))
+keys.append(
+    Key([], 'F2', lazy.group['scratchpad'].dropdown_toggle('qtile shell')))
 
 layout_theme = {
     "border_width": 2,
