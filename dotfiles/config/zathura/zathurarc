@@ -1,4 +1,5 @@
 set adjust-open "width"
+set recolor true
 set render-loading false
 set highlight-color "#dd0000"
 set highlight-active-color "#bb0000"
