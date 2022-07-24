@@ -4,6 +4,8 @@
 application/json=nvim.desktop;
 application/pdf=org.pwmt.zathura.desktop;
 application/toml=nvim.desktop;
+application/x-desktop=nvim.desktop;
+application/x-shellscript=nvim.desktop;
 image/*=sxiv.desktop;
 inode/directory=ranger.desktop;
 text/*=nvim.desktop;
