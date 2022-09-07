@@ -5,6 +5,8 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+PROMPT_EOL_MARK=''
+
 unset LINES
 unset COLUMNS
 
@@ -20,14 +22,19 @@ compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 
+ 
 function zle-line-init zle-keymap-select {
     case ${KEYMAP} in
         (vicmd)      mode="N" ;;
         (main|viins) mode="I" ;;
         (*)          mode="I" ;;
     esac
+		branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+		if [ "$branch" != "" ]; then
+			branch="%F{15}(%F{202}$branch%F{15}) "
+		fi
         PS1="  ${VIRTUAL_ENV:t}
- %F{15}%~ %F{202}$mode %F{15}>>%f "
+ $branch%F{15}%~ %F{202}$mode %F{15}>>%f "
     zle reset-prompt
 }
 

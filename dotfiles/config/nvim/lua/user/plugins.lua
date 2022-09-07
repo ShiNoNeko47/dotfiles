@@ -60,13 +60,17 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("junegunn/vim-slash")
 	use("jiangmiao/auto-pairs")
+
 	use("tpope/vim-surround")
+	use("tpope/vim-fugitive")
+	use("tpope/vim-rhubarb")
+	use("tpope/vim-repeat")
+
 	use("zivyangll/git-blame.vim")
 	use("stevearc/vim-arduino")
 	use({ "turbio/bracey.vim", run = "npm install --prefix server" })
 	use("airblade/vim-gitgutter")
 	use("kyazdani42/nvim-tree.lua")
-	use("lunarvim/colorschemes")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("akinsho/toggleterm.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
@@ -74,21 +78,36 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim")
 	use("ahmedkhalf/project.nvim")
 	use("nvim-lualine/lualine.nvim")
-	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb")
 	use("junegunn/gv.vim")
 	use("aperezdc/vim-template")
 	use("Konfekt/FastFold")
 	use("matze/vim-tex-fold")
-	use("nvim-treesitter/nvim-treesitter")
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("arjunmahishi/run-code.nvim")
 	use("plasticboy/vim-markdown")
 	use("elzr/vim-json")
-	use({"iamcco/markdown-preview.nvim",
+	use({
+		"iamcco/markdown-preview.nvim",
 		run = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	})
+	use("mg979/vim-visual-multi")
+	use("numToStr/Comment.nvim")
+
+	use("mfussenegger/nvim-dap")
+	use("mfussenegger/nvim-dap-python")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("nvim-telescope/telescope-dap.nvim")
+	use({
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "asdfjklč" })
+		end,
+	})
+	use({ "akinsho/bufferline.nvim", tag = "v2.*" })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

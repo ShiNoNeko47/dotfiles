@@ -115,6 +115,9 @@ dotfiles:
   f_current_wallpaper:
     src: Wallpapers/current_wallpaper
     dst: ~/Wallpapers/current_wallpaper
+  d_qutebrowser_default_page:
+    src: Documents/qutebrowser_default_page
+    dst: ~/Documents/qutebrowser_default_page
 profiles:
   Arch:
     dotfiles:
@@ -152,3 +155,4 @@ profiles:
     - f_quickmarks
     - f_ryuuguurena.png
     - f_current_wallpaper
+    - d_qutebrowser_default_page

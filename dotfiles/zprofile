@@ -5,12 +5,11 @@ export EDITOR=nvim
 export TERMINAL=kitty
 export SHELL=/usr/bin/zsh
 export QT_QPA_PLATFORMTHEME=qt5ct
-export STEAM_RUNTIME=0
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export XKB_DEFAULT_LAYOUT="hr"
 export XKB_DEFAULT_OPTIONS="caps:none"
-export KEYMAP=~/.local/share/kbd/keymaps/croat.map # custom keymap
+# export KEYMAP=~/.local/share/kbd/keymaps/croat.map # custom keymap
 
 export WALLPAPER=$(cat ~/Wallpapers/current_wallpaper)
 

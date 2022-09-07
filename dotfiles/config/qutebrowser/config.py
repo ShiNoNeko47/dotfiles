@@ -832,7 +832,7 @@ c.content.headers.do_not_track = True
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 ## Type: FormatString
-# c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0'
 
 # Enable hyperlink auditing (`<a ping>`).
 ## Type: Bool
