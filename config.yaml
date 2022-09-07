@@ -118,6 +118,10 @@ dotfiles:
   d_qutebrowser_default_page:
     src: Documents/qutebrowser_default_page
     dst: ~/Documents/qutebrowser_default_page
+  f_rofi-power-menu:
+    src: local/bin/rofi-power-menu
+    dst: ~/.local/bin/rofi-power-menu
+    chmod: '755'
 profiles:
   Arch:
     dotfiles:
@@ -156,3 +160,4 @@ profiles:
     - f_ryuuguurena.png
     - f_current_wallpaper
     - d_qutebrowser_default_page
+    - f_rofi-power-menu
