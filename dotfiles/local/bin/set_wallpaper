@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd ~/Wallpapers/
+
+feh --bg-scale $1
+echo $1 > current_wallpaper
