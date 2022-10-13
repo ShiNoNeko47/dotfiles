@@ -854,11 +854,11 @@ c.content.javascript.can_access_clipboard = True
 
 # Allow JavaScript to close tabs.
 ## Type: Bool
-c.content.javascript.can_close_tabs = False
+c.content.javascript.can_close_tabs = True
 
 # Allow JavaScript to open new tabs without user interaction.
 ## Type: Bool
-c.content.javascript.can_open_tabs_automatically = False
+c.content.javascript.can_open_tabs_automatically = True
 
 # Enable JavaScript.
 ## Type: Bool
@@ -1006,7 +1006,7 @@ c.content.site_specific_quirks.enabled = True
 # - disallow: Disallows all navigation requests to URLs with unknown schemes.
 # - allow-from-user-interaction: Allows navigation requests to URLs with unknown schemes that are issued from user-interaction (like a mouse-click), whereas other navigation requests (for example from JavaScript) are suppressed.
 # - allow-all: Allows all navigation requests to URLs with unknown schemes.
-c.content.unknown_url_scheme_policy = 'allow-from-user-interaction'
+c.content.unknown_url_scheme_policy = 'allow-all'
 
 # List of user stylesheet filenames to use.
 # Type: List of File, or File
@@ -2239,6 +2239,7 @@ config.bind('m', 'spawn mpv {url}')
 # config.bind('<Return>', 'hint-follow', mode='hint')
 
 # Bindings for insert mode
+config.bind('<Ctrl-p>', 'spawn --userscript qute-pass', mode='insert')
 # config.bind('<Ctrl-E>', 'edit-text', mode='insert')
 # config.bind('<Escape>', 'mode-leave', mode='insert')
 # config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')

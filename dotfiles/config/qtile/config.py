@@ -66,7 +66,7 @@ keys = [
         [mod],
         "c",
         lazy.spawn(
-            'rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n \'{result}\' | xclip"'),
+            'rofi -show calc -modi calc -no-persist-history -no-show-match -no-sort -calc-command "echo -n \'{result}\' | xclip"'),
         desc="Run Calculator",
     ),
     Key(
@@ -80,7 +80,8 @@ keys = [
         [mod],
         "s",
         lazy.spawn(
-            "rofi -show power-menu -config ~/.config/rofi/config_powermenu.rasi -monitor primary -modi power-menu:rofi-power-menu"
+            "rofi -show power-menu -monitor primary -modi power-menu:rofi-power-menu"
+            # "rofi -show power-menu -config ~/.config/rofi/config_powermenu.rasi -monitor primary -modi power-menu:rofi-power-menu"
         ),
         desc="Run Power-menu",
     ),
@@ -152,6 +153,25 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     Key([mod], "p", lazy.spawn("toggle_picom")),
+
+    Key([], "XF86AudioPlay", lazy.spawn("mpris_player_control -q -a playpause")),
+    Key([], "XF86AudioStop", lazy.spawn("mpris_player_control -q -a stop")),
+    Key([], "XF86AudioPrev", lazy.spawn("mpris_player_control -q -a previous")),
+    Key([], "XF86AudioNext", lazy.spawn("mpris_player_control -q -a next")),
+
+    # Key([], "XF86AudioMute", lazy.spawn("mpris_player_control -q -m")),
+    # Key([], "XF86AudioLowerVolume", lazy.spawn("mpris_player_control -q -V -5")),
+    # Key([], "XF86AudioRaiseVolume", lazy.spawn("mpris_player_control -q -V +5")),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn(
+        'sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"')),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(
+        'sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"')),
+
+    # Key([], "XF86AudioMicMute", lazy.spawn("pactl set-source-mute 1 toggle")),
+
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5-")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +5")),
 ]
 
 groups = [Group(f" {i} ") for i in "一二三四五六七八九"]
@@ -177,11 +197,13 @@ keys.append(
 keys.append(
     Key([], 'F2', lazy.group['scratchpad'].dropdown_toggle('qtile shell')))
 
+colors = ("#000000", "#440000", "#880000", '#aa0000', "#cc0000", '#ff0000')
+
 layout_theme = {
     "border_width": 2,
     "margin": 6,
-    "border_focus": "#ff0000",
-    "border_normal": "#440000",
+    "border_focus": colors[5],
+    "border_normal": colors[1],
 }
 
 layouts = [
@@ -194,7 +216,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="Fira Code Regular",
+    font="Fira Code Bold",
     fontsize=12,
     padding=3,
 )
@@ -204,18 +226,16 @@ barShape = "◢"
 
 filled = "██"
 
-barColor = ("#000000", "#440000", "#880000", "#cc0000")
-
 
 def angle(x, y):
     return widget.TextBox(
-        barShape, foreground=barColor[x], background=barColor[y], fontsize=43, width=28
+        barShape, foreground=colors[x], background=colors[y], fontsize=43, width=28
     )
 
 
 def space(x):
     return widget.TextBox(
-        filled, foreground=barColor[x], fontsize=32, width=10, padding=0
+        filled, foreground=colors[x], fontsize=32, width=10, padding=0
     )
 
 
@@ -227,63 +247,76 @@ screens = [
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    background=barColor[3],
+                    background=colors[4],
                     highlight_method="block",
                     inactive="#ffaaaa",
-                    this_current_screen_border=barColor[2],
-                    this_screen_border="#aa0000",
+                    this_current_screen_border=colors[2],
+                    this_screen_border=colors[3],
                     rounded=False,
-                    other_current_screen_border="#aa0000",
-                    other_screen_border="#aa0000",
+                    other_current_screen_border=colors[3],
+                    other_screen_border=colors[3],
                     urgent_alert_method="line",
-                    urgent_border=barColor[0],
+                    urgent_border=colors[0],
                     urgent_text="#ffffff",
                     margin_x=0,
                     padding=5,
-                    font="Fira Code Regular",
                 ),
-                angle(0, 3),
+                angle(0, 4),
                 space(0),
-                widget.WindowName(background=barColor[0]),
-                angle(3, 0),
-                space(3),
+                widget.WindowName(background=colors[0]),
+                angle(4, 0),
+                space(4),
                 widget.CheckUpdates(
                     no_update_string="Updates: 0",
                     display_format="Updates: {updates}",
                     distro="Arch_checkupdates",
-                    background=barColor[3],
+                    background=colors[4],
                     execute="env LINES= COLUMNS= kitty -e paru",
                 ),
-                angle(0, 3),
-                # angle(3, 0),
-                # space(3),
-                # widget.Battery(background=barColor[3]),
-                # angle(0, 3),
-                angle(3, 0),
-                space(3),
+                angle(0, 4),
+                angle(4, 0),
+                space(4),
+                widget.Battery(
+                    background=colors[4],
+                    low_foreground='ffffff'
+                ),
+                angle(0, 4),
+                angle(4, 0),
+                space(4),
                 widget.Volume(
                     step=5,
-                    background=barColor[3],
+                    background=colors[4],
                     emoji=True,
                     volume_app="env LINES= COLUMNS= kitty -e pulsemixer",
                 ),
                 widget.Volume(
                     step=5,
-                    background=barColor[3],
+                    background=colors[4],
                     volume_app="env LINES= COLUMNS= kitty -e pulsemixer",
                 ),
-                angle(0, 3),
-                angle(3, 0),
-                space(3),
+                angle(0, 4),
+                angle(4, 0),
+                space(4),
                 widget.Clock(format=" %d %b, %a %H:%M",
-                             background=barColor[3]),
-                angle(0, 3),
+                             background=colors[4]),
+                angle(0, 4),
+                angle(4, 0),
+                space(4),
+                widget.KeyboardLayout(
+                    display_map={
+                        'us': 'en',
+                        'hr': 'hr'
+                    },
+                    configured_keyboards=['us', 'hr'],
+                    background=colors[4],
+                ),
+                angle(0, 4),
                 space(0),
                 widget.Systray(),
-                angle(3, 0),
-                space(3),
+                angle(4, 0),
+                space(4),
                 widget.CurrentLayoutIcon(
-                    background=barColor[3], padding=5, scale=0.8),
+                    background=colors[4], padding=5, scale=0.8),
             ],
             20,
         ),
@@ -295,55 +328,54 @@ screens = [
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    background=barColor[3],
+                    background=colors[4],
                     highlight_method="block",
                     inactive="#ffaaaa",
-                    this_current_screen_border=barColor[2],
-                    this_screen_border="#aa0000",
+                    this_current_screen_border=colors[2],
+                    this_screen_border=colors[3],
                     rounded=False,
-                    other_current_screen_border="#aa0000",
-                    other_screen_border="#aa0000",
+                    other_current_screen_border=colors[3],
+                    other_screen_border=colors[3],
                     urgent_alert_method="line",
-                    urgent_border=barColor[0],
+                    urgent_border=colors[0],
                     urgent_text="#ffffff",
                     margin_x=0,
                     padding=5,
-                    font="Fira Code Regular",
                 ),
-                angle(0, 3),
+                angle(0, 4),
                 space(0),
-                widget.WindowName(background=barColor[0]),
-                # widget.School(barShape, foreground=barColor[3], background=barColor[0], fontsize=34, width=26, padding=0),
-                # widget.School(filled, foreground=barColor[3], background=barColor[0], fontsize=32, width=10, padding=0),
-                # widget.School(background=barColor[3]),
-                # widget.School(barShape, foreground=barColor[0], background=barColor[3], fontsize=34, width=26, padding=0),
-                # angle(3, 0),
-                # space(3),
-                # widget.Battery(background=barColor[3]),
-                # angle(0, 3),
-                angle(3, 0),
-                space(3),
+                widget.WindowName(background=colors[0]),
+                # widget.School(barShape, foreground=colors[4], background=colors[0], fontsize=34, width=26, padding=0),
+                # widget.School(filled, foreground=colors[4], background=colors[0], fontsize=32, width=10, padding=0),
+                # widget.School(background=colors[4]),
+                # widget.School(barShape, foreground=colors[0], background=colors[4], fontsize=34, width=26, padding=0),
+                # angle(4, 0),
+                # space(4),
+                # widget.Battery(background=colors[4]),
+                # angle(0, 4),
+                angle(4, 0),
+                space(4),
                 widget.Volume(
                     step=5,
-                    background=barColor[3],
+                    background=colors[4],
                     emoji=True,
                     volume_app="env LINES= COLUMNS= kitty -e pulsemixer",
                 ),
                 widget.Volume(
                     step=5,
-                    background=barColor[3],
+                    background=colors[4],
                     volume_app="env LINES= COLUMNS= kitty -e pulsemixer",
                 ),
-                angle(0, 3),
-                angle(3, 0),
-                space(3),
+                angle(0, 4),
+                angle(4, 0),
+                space(4),
                 widget.Clock(format=" %d %b, %a %H:%M",
-                             background=barColor[3]),
-                angle(0, 3),
-                angle(3, 0),
-                space(3),
+                             background=colors[4]),
+                angle(0, 4),
+                angle(4, 0),
+                space(4),
                 widget.CurrentLayoutIcon(
-                    background=barColor[3], padding=5, scale=0.8),
+                    background=colors[4], padding=5, scale=0.8),
             ],
             20,
         ),
@@ -383,6 +415,7 @@ floating_layout = layout.Floating(
             title="pinentry"
         ),  # GPG key password entry utility of `xprop` to see the wm class and name of an X client.
         Match(title="win0"),
+        Match(title="zoom"),
         Match(wm_class="gpick"),
         Match(wm_class="feh"),
         Match(wm_class="qemu"),

@@ -3,7 +3,7 @@ return {
 		pylsp = {
 			plugins = {
 				jedi = {
-					environment = "/"
+					environment = "./env"
 				},
 				-- pylint = {
 					-- enabled = true

@@ -15,6 +15,7 @@ inputbar {
 	children: [entry];
 }
 entry {
+	placeholder:			"";
     height:                 20px;
     expand:                 false;
     width:                  10em;
@@ -23,10 +24,10 @@ entry {
     border:                 0;
 }
 textbox {
-	text-color:				#ffffff;
+	text-color:             #ffffff;
 }
 listview{
-    fixed-height:           0;
+    fixed-height:           false;
     dynamic:                true;
     border:                 1px solid 0px 0px;
     border-color:           @border-color;

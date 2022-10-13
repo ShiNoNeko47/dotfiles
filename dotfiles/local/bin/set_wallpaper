@@ -2,5 +2,5 @@
 
 cd ~/Wallpapers/
 
-feh --bg-scale $1
+feh --bg-fill $1
 echo $1 > current_wallpaper

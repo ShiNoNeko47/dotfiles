@@ -10,8 +10,9 @@ PROMPT_EOL_MARK=''
 unset LINES
 unset COLUMNS
 
-alias dotdrop='/home/nikola/Documents/GitHub/dotfiles/dotdrop.sh --cfg=/home/nikola/Documents/GitHub/dotfiles/config.yaml'
+alias dotdrop='/home/nikola/Documents/dev/dotfiles/dotdrop.sh --cfg=/home/nikola/Documents/dev/dotfiles/config.yaml'
 alias ani-cli="ani-cli -q 480"
+# [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
