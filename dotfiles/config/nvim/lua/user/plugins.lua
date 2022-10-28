@@ -65,6 +65,7 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
 	use("tpope/vim-repeat")
+	use("tpope/vim-eunuch")
 
 	use("zivyangll/git-blame.vim")
 	use("stevearc/vim-arduino")
@@ -80,8 +81,8 @@ return packer.startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 	use("junegunn/gv.vim")
 	use("aperezdc/vim-template")
-	use("Konfekt/FastFold")
-	use("matze/vim-tex-fold")
+	-- use("Konfekt/FastFold")
+	-- use("matze/vim-tex-fold")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("arjunmahishi/run-code.nvim")
 	use("plasticboy/vim-markdown")
@@ -95,10 +96,10 @@ return packer.startup(function(use)
 	use("mg979/vim-visual-multi")
 	use("numToStr/Comment.nvim")
 
-	use("mfussenegger/nvim-dap")
-	use("mfussenegger/nvim-dap-python")
-	use("theHamsta/nvim-dap-virtual-text")
-	use("nvim-telescope/telescope-dap.nvim")
+	-- use("mfussenegger/nvim-dap")
+	-- use("mfussenegger/nvim-dap-python")
+	-- use("theHamsta/nvim-dap-virtual-text")
+	-- use("nvim-telescope/telescope-dap.nvim")
 	use({
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
@@ -109,6 +110,15 @@ return packer.startup(function(use)
 	})
 	use({ "akinsho/bufferline.nvim", tag = "v2.*" })
 
+	use({ "ThePrimeagen/vim-be-good" })
+	use({
+		"lervag/vimtex",
+		opt = true,
+		config = function()
+			vim.g.vimtex_view_general_viewer = "zathura"
+		end,
+		ft = "tex",
+	})
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

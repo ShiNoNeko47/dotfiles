@@ -129,6 +129,9 @@ dotfiles:
   f_gamemode.ini:
     src: config/gamemode.ini
     dst: ~/.config/gamemode.ini
+  f_20211021_065952.jpg:
+    src: Wallpapers/20211021_065952.jpg
+    dst: ~/Wallpapers/20211021_065952.jpg
 profiles:
   Arch:
     dotfiles:
@@ -170,3 +173,4 @@ profiles:
     - f_rofi-power-menu
     - f_set_wallpaper
     - f_gamemode.ini
+    - f_20211021_065952.jpg

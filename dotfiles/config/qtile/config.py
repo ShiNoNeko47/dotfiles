@@ -58,6 +58,14 @@ def on_restart():
         logger.debug("wallpaper set to " + wallpaper)
 
 
+@hook.subscribe.resume
+def on_resume():
+    for w in screens[0].top.widgets:
+        if isinstance(w, type(widget.Battery())):
+            w.cmd_force_update()
+    os.system('notify-send "$(calcurse -a)"')
+
+
 alt = "mod1"
 mod = "mod4"
 
@@ -66,14 +74,14 @@ keys = [
         [mod],
         "c",
         lazy.spawn(
-            'rofi -show calc -modi calc -no-persist-history -no-show-match -no-sort -calc-command "echo -n \'{result}\' | xclip"'),
+            "rofi -show calc -modi calc -no-persist-history -no-show-match -no-sort -calc-command \"echo -n '{result}' | xclip\""
+        ),
         desc="Run Calculator",
     ),
     Key(
         [mod, "shift"],
         "slash",
-        lazy.spawn(
-            'rofi -show drun -monitor -4 -drun-display-format "{name}"'),
+        lazy.spawn('rofi -show drun -monitor -4 -drun-display-format "{name}"'),
         desc="Run Launcher",
     ),
     Key(
@@ -92,8 +100,7 @@ keys = [
         desc="alt tab",
     ),
     Key([mod], "d", lazy.spawn("dunstctl history-pop"), desc="Show dunst history"),
-    Key([mod, "shift"], "d", lazy.spawn(
-        "dunstctl close"), desc="Close dunst history"),
+    Key([mod, "shift"], "d", lazy.spawn("dunstctl close"), desc="Close dunst history"),
     Key([], "Print", lazy.spawn("screenshot"), desc="Take a screensht"),
     Key(
         ["shift"],
@@ -112,8 +119,7 @@ keys = [
     # Switch between windows in current stack pane
     Key([mod], "h", lazy.layout.left(), desc="Switch left in current stack "),
     Key([mod], "l", lazy.layout.right(), desc="Switch right in current stack "),
-    Key([mod], "j", lazy.group.next_window(),
-        desc="Switch to next window in group"),
+    Key([mod], "j", lazy.group.next_window(), desc="Switch to next window in group"),
     Key(
         [mod], "k", lazy.group.prev_window(), desc="Switch to previous window in group"
     ),
@@ -153,23 +159,25 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     Key([mod], "p", lazy.spawn("toggle_picom")),
-
     Key([], "XF86AudioPlay", lazy.spawn("mpris_player_control -q -a playpause")),
     Key([], "XF86AudioStop", lazy.spawn("mpris_player_control -q -a stop")),
     Key([], "XF86AudioPrev", lazy.spawn("mpris_player_control -q -a previous")),
     Key([], "XF86AudioNext", lazy.spawn("mpris_player_control -q -a next")),
-
     # Key([], "XF86AudioMute", lazy.spawn("mpris_player_control -q -m")),
     # Key([], "XF86AudioLowerVolume", lazy.spawn("mpris_player_control -q -V -5")),
     # Key([], "XF86AudioRaiseVolume", lazy.spawn("mpris_player_control -q -V +5")),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn(
-        'sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"')),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn(
-        'sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"')),
-
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn('sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"'),
+    ),
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn('sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"'),
+    ),
     # Key([], "XF86AudioMicMute", lazy.spawn("pactl set-source-mute 1 toggle")),
-
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5-")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +5")),
 ]
@@ -184,20 +192,36 @@ for i, j in enumerate(groups):
         Key([mod, "shift"], str(i + 1), lazy.window.togroup(j.name))
     )  # Send current window to another group
 
-groups.append(ScratchPad("scratchpad", [
-    DropDown("kitty", "kitty",
-             x=0.1, y=0.1, width=0.8, height=0.8,
-             on_focus_lost_hide=True),
-    DropDown("qtile shell", "kitty -e qtile shell",
-             x=0.1, y=0.1, width=0.8, height=0.8,
-             on_focus_lost_hide=True)]),)
+groups.append(
+    ScratchPad(
+        "scratchpad",
+        [
+            DropDown(
+                "kitty",
+                "kitty",
+                x=0.1,
+                y=0.1,
+                width=0.8,
+                height=0.8,
+                on_focus_lost_hide=True,
+            ),
+            DropDown(
+                "qtile shell",
+                "kitty -e qtile shell",
+                x=0.1,
+                y=0.1,
+                width=0.8,
+                height=0.8,
+                on_focus_lost_hide=True,
+            ),
+        ],
+    ),
+)
 
-keys.append(
-    Key([], 'F1', lazy.group['scratchpad'].dropdown_toggle('kitty')))
-keys.append(
-    Key([], 'F2', lazy.group['scratchpad'].dropdown_toggle('qtile shell')))
+keys.append(Key([], "F1", lazy.group["scratchpad"].dropdown_toggle("kitty")))
+keys.append(Key([], "F2", lazy.group["scratchpad"].dropdown_toggle("qtile shell")))
 
-colors = ("#000000", "#440000", "#880000", '#aa0000', "#cc0000", '#ff0000')
+colors = ("#000000", "#440000", "#880000", "#aa0000", "#cc0000", "#ff0000")
 
 layout_theme = {
     "border_width": 2,
@@ -229,13 +253,18 @@ filled = "██"
 
 def angle(x, y):
     return widget.TextBox(
-        barShape, foreground=colors[x], background=colors[y], fontsize=43, width=28
+        barShape, foreground=colors[x], background=colors[y], fontsize=46, width=28
     )
 
 
 def space(x):
     return widget.TextBox(
-        filled, foreground=colors[x], fontsize=32, width=10, padding=0
+        filled,
+        background=colors[x],
+        foreground=colors[x],
+        fontsize=32,
+        width=9,
+        padding=0,
     )
 
 
@@ -276,10 +305,7 @@ screens = [
                 angle(0, 4),
                 angle(4, 0),
                 space(4),
-                widget.Battery(
-                    background=colors[4],
-                    low_foreground='ffffff'
-                ),
+                widget.Battery(background=colors[4], low_foreground="ffffff"),
                 angle(0, 4),
                 angle(4, 0),
                 space(4),
@@ -297,17 +323,13 @@ screens = [
                 angle(0, 4),
                 angle(4, 0),
                 space(4),
-                widget.Clock(format=" %d %b, %a %H:%M",
-                             background=colors[4]),
+                widget.Clock(format=" %d %b, %a %H:%M", background=colors[4]),
                 angle(0, 4),
                 angle(4, 0),
                 space(4),
                 widget.KeyboardLayout(
-                    display_map={
-                        'us': 'en',
-                        'hr': 'hr'
-                    },
-                    configured_keyboards=['us', 'hr'],
+                    display_map={"us": "en", "hr": "hr"},
+                    configured_keyboards=["us", "hr"],
                     background=colors[4],
                 ),
                 angle(0, 4),
@@ -315,8 +337,7 @@ screens = [
                 widget.Systray(),
                 angle(4, 0),
                 space(4),
-                widget.CurrentLayoutIcon(
-                    background=colors[4], padding=5, scale=0.8),
+                widget.CurrentLayoutIcon(background=colors[4], padding=5, scale=0.8),
             ],
             20,
         ),
@@ -369,13 +390,11 @@ screens = [
                 angle(0, 4),
                 angle(4, 0),
                 space(4),
-                widget.Clock(format=" %d %b, %a %H:%M",
-                             background=colors[4]),
+                widget.Clock(format=" %d %b, %a %H:%M", background=colors[4]),
                 angle(0, 4),
                 angle(4, 0),
                 space(4),
-                widget.CurrentLayoutIcon(
-                    background=colors[4], padding=5, scale=0.8),
+                widget.CurrentLayoutIcon(background=colors[4], padding=5, scale=0.8),
             ],
             20,
         ),

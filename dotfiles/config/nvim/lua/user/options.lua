@@ -6,7 +6,7 @@ vim.opt.conceallevel = 0
 vim.opt.fileencoding = "utf-8"
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
-vim.opt.mouse = "nv"
+vim.opt.mouse = "v"
 vim.opt.pumheight = 10
 vim.opt.showmode = false
 vim.opt.smartcase = true
@@ -33,3 +33,4 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.shortmess:append("c")
 vim.cmd([[set iskeyword+=-]])
+vim.opt.conceallevel = 2

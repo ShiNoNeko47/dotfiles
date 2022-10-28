@@ -9,6 +9,7 @@ let c_gnu = 1
 
 
 hi Normal       ctermfg=15   ctermbg=None cterm=None
+hi Conceal      ctermfg=15   ctermbg=None cterm=None
 hi Cursor       ctermfg=253  ctermbg=57   cterm=None
 hi SignColumn                ctermbg=None
 hi SpecialKey   ctermfg=17   ctermbg=None cterm=None

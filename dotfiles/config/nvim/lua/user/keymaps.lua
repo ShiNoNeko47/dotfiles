@@ -63,4 +63,9 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Formating
-keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting()<cr>", opts)
+keymap(
+	"n",
+	"<leader>f",
+	":lua vim.lsp.buf.format({bufnr = bufnr, filter = function(client) return client.name == 'null-ls' end, })<cr>",
+	opts
+)

@@ -1,14 +1,20 @@
-return {
-	settings = {
-		pylsp = {
-			plugins = {
-				jedi = {
-					environment = "./env"
+require("lfs")
+
+function PylspConfig(env)
+	return {
+		settings = {
+			pylsp = {
+				plugins = {
+					jedi = {
+						environment = env,
+					},
 				},
-				-- pylint = {
-					-- enabled = true
-				-- }
-			}
-		}
+			},
+		},
 	}
-}
+end
+
+if lfs.attributes("./env", "mode") == "directory" then
+	return PylspConfig("./env")
+end
+return PylspConfig("/")
