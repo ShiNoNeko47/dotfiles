@@ -133,7 +133,7 @@ dotfiles:
     src: Wallpapers/20211021_065952.jpg
     dst: ~/Wallpapers/20211021_065952.jpg
 profiles:
-  Arch:
+  ShiNoNeko47:
     dotfiles:
     - f_xinitrc
     - f_xresources
