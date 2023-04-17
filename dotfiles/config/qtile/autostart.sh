@@ -2,7 +2,7 @@
 # lxsession &
 lxpolkit &
 numlockx &
-picom --experimental-backends -b &
+picom -b &
 xset s off &
 nm-applet &
 udiskie -s &
@@ -11,7 +11,7 @@ autorandr -c &
 system-config-printer-applet &
 calcurse --daemon &
 notify-send "$(calcurse -a)" &
-firewall-applet &
+# firewall-applet &
 # feh --bg-scale ${WALLPAPER}
 # discord &
 # protonvpn-applet &

@@ -99,6 +99,7 @@ keys = [
         lazy.spawn("rofi -show window -monitor -4"),
         desc="alt tab",
     ),
+    Key([mod, "control"], "p", lazy.spawn("typepass")),
     Key([mod], "d", lazy.spawn("dunstctl history-pop"), desc="Show dunst history"),
     Key([mod, "shift"], "d", lazy.spawn("dunstctl close"), desc="Close dunst history"),
     Key([], "Print", lazy.spawn("screenshot"), desc="Take a screensht"),
@@ -112,6 +113,7 @@ keys = [
     Key([mod], "e", lazy.spawn("env LINES= COLUMNS= kitty -e neomutt")),
     Key([mod], "t", lazy.spawn("env LINES= COLUMNS= kitty -e rtorrent")),
     Key([mod], "q", lazy.spawn("qutebrowser")),
+    Key([mod], "a", lazy.spawn("ani-cli")),
     Key([mod], "space", lazy.next_screen(), desc="move focus to next screen"),
     Key([mod], "f", lazy.window.toggle_floating()),
     Key([mod], "m", lazy.layout.maximize()),
@@ -166,20 +168,36 @@ keys = [
     # Key([], "XF86AudioMute", lazy.spawn("mpris_player_control -q -m")),
     # Key([], "XF86AudioLowerVolume", lazy.spawn("mpris_player_control -q -V -5")),
     # Key([], "XF86AudioRaiseVolume", lazy.spawn("mpris_player_control -q -V +5")),
-    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
+    Key(
+        [],
+        "XF86AudioMute",
+        lazy.spawn('sh -c "pactl set-sink-mute 0 toggle; dunst_volume"'),
+    ),
     Key(
         [],
         "XF86AudioLowerVolume",
-        lazy.spawn('sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"'),
+        lazy.spawn(
+            'sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%; dunst_volume"'
+        ),
     ),
     Key(
         [],
         "XF86AudioRaiseVolume",
-        lazy.spawn('sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"'),
+        lazy.spawn(
+            'sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%; dunst_volume"'
+        ),
     ),
     # Key([], "XF86AudioMicMute", lazy.spawn("pactl set-source-mute 1 toggle")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5-")),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +5")),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn('sh -c "brightnessctl s 5-; dunst_brightness"'),
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.spawn('sh -c "brightnessctl s +5; dunst_brightness"'),
+    ),
 ]
 
 groups = [Group(f" {i} ") for i in "一二三四五六七八九"]
@@ -218,8 +236,8 @@ groups.append(
     ),
 )
 
-keys.append(Key([], "F1", lazy.group["scratchpad"].dropdown_toggle("kitty")))
-keys.append(Key([], "F2", lazy.group["scratchpad"].dropdown_toggle("qtile shell")))
+keys.append(Key([mod], "F1", lazy.group["scratchpad"].dropdown_toggle("kitty")))
+keys.append(Key([mod], "F2", lazy.group["scratchpad"].dropdown_toggle("qtile shell")))
 
 colors = ("#000000", "#440000", "#880000", "#aa0000", "#cc0000", "#ff0000")
 
@@ -248,8 +266,6 @@ extension_defaults = widget_defaults.copy()
 
 barShape = "◢"
 
-filled = "██"
-
 
 def angle(x, y):
     return widget.TextBox(
@@ -259,7 +275,6 @@ def angle(x, y):
 
 def space(x):
     return widget.TextBox(
-        filled,
         background=colors[x],
         foreground=colors[x],
         fontsize=32,
@@ -435,7 +450,7 @@ floating_layout = layout.Floating(
         ),  # GPG key password entry utility of `xprop` to see the wm class and name of an X client.
         Match(title="win0"),
         Match(title="zoom"),
-        Match(wm_class="gpick"),
+        Match(wm_class="gcolor3"),
         Match(wm_class="feh"),
         Match(wm_class="qemu"),
         Match(wm_class="gimp"),

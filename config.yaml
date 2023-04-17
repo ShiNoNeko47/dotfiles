@@ -61,9 +61,6 @@ dotfiles:
   d_xorg.conf.d:
     src: etc/X11/xorg.conf.d
     dst: /etc/X11/xorg.conf.d
-  d_grub_theme_higurashi:
-    src: boot/grub/themes/grub_theme_higurashi
-    dst: /boot/grub/themes/grub_theme_higurashi
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
@@ -132,6 +129,31 @@ dotfiles:
   f_20211021_065952.jpg:
     src: Wallpapers/20211021_065952.jpg
     dst: ~/Wallpapers/20211021_065952.jpg
+  d_bspwm:
+    src: config/bspwm
+    dst: ~/.config/bspwm
+  f_sxhkdrc:
+    src: config/sxhkd/sxhkdrc
+    dst: ~/.config/sxhkd/sxhkdrc
+  f_stalonetrayrc:
+    src: stalonetrayrc
+    dst: ~/.stalonetrayrc
+  f_dunst_volume:
+    src: local/bin/dunst_volume
+    dst: ~/.local/bin/dunst_volume
+    chmod: '755'
+  f_lemonbar_rust:
+    src: local/bin/lemonbar_rust
+    dst: ~/.local/bin/lemonbar_rust
+    chmod: '755'
+  f_typepass:
+    src: local/bin/typepass
+    dst: ~/.local/bin/typepass
+    chmod: '755'
+  f_dunst_brightness:
+    src: local/bin/dunst_brightness
+    dst: ~/.local/bin/dunst_brightness
+    chmod: '755'
 profiles:
   ShiNoNeko47:
     dotfiles:
@@ -152,7 +174,6 @@ profiles:
     - d_rofi
     - d_zathura
     - d_xorg.conf.d
-    - d_grub_theme_higurashi
     - f_zshrc
     - f_zprofile
     - d_calcurse
@@ -174,3 +195,10 @@ profiles:
     - f_set_wallpaper
     - f_gamemode.ini
     - f_20211021_065952.jpg
+    - d_bspwm
+    - f_sxhkdrc
+    - f_stalonetrayrc
+    - f_dunst_volume
+    - f_lemonbar_rust
+    - f_typepass
+    - f_dunst_brightness

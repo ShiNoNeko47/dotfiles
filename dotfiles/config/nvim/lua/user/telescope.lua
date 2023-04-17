@@ -1,7 +1,4 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-	return
-end
+local telescope = require("telescope")
 
 telescope.setup({
 	defaults = {
@@ -11,15 +8,15 @@ telescope.setup({
 		path_display = { "smart" },
 	},
 	pickers = {
-		find_files = {
-			theme = "ivy",
-		},
-		projects = {
-			theme = "ivy",
-		},
-		live_grep = {
-			theme = "ivy",
-		},
+		-- find_files = {
+		-- 	theme = "ivy",
+		-- },
+		-- projects = {
+		-- 	theme = "ivy",
+		-- },
+		-- live_grep = {
+		-- 	theme = "ivy",
+		-- },
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
 		--   picker_config_key = value,

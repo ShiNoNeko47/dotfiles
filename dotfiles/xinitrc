@@ -32,9 +32,10 @@ fi
 
 # start some nice programs
 
-session="${1:-qtile}"
+session="${1:-bspwm}"
 
 case $session in
+	bspwm 	) exec bspwm;;
 	qtile	) exec qtile start;;
 	steam	) exec steamos-session;;
 	*		) exec $1;;

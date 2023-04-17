@@ -1,0 +1,5 @@
+#!/bin/sh
+current_window="$(xwininfo -id "$(bspc query -N -n)" | sed -nE "s/xwininfo: Window id: ......... \"(.*)\"/\1/p")"
+password="$(pass show $current_window || dunstify No\ password\ stored\ for\ $current_window)"
+sleep .5
+xdotool type "${password}"

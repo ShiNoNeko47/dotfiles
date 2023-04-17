@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000000
+SAVEHIST=10000000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
@@ -10,8 +10,11 @@ PROMPT_EOL_MARK=''
 unset LINES
 unset COLUMNS
 
-alias dotdrop='/home/nikola/Documents/dev/dotfiles/dotdrop.sh --cfg=/home/nikola/Documents/dev/dotfiles/config.yaml'
+alias :q=exit
+
+alias dotdrop='/home/nikola/Documents/dev/git/dotfiles/dotdrop.sh --cfg=/home/nikola/Documents/dev/git/dotfiles/config.yaml'
 alias ani-cli="ani-cli -q 480"
+alias neomutt="neomutt -F ~/.config/mutt/accounts/foi"
 # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -21,6 +24,8 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
+
+eval "$(zoxide init zsh)"
 
 typeset -g -A key
 
@@ -81,3 +86,4 @@ zle -N zle-keymap-select
 
 setopt +o nomatch
 source *env/bin/activate &> /dev/null
+source ~/.cargo/env

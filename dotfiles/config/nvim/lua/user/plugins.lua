@@ -24,10 +24,7 @@ vim.cmd([[
 ]])
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
-end
+local packer = require("packer")
 
 -- Have packer use a popup window
 packer.init({
@@ -44,12 +41,15 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
+	use("hrsh7th/cmp-nvim-lua") -- cmdline completions
 	use("hrsh7th/cmp-nvim-lsp") -- lsp completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
+	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -57,58 +57,64 @@ return packer.startup(function(use)
 
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	use("junegunn/vim-slash")
+	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
 	use("jiangmiao/auto-pairs")
 
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb")
-	use("tpope/vim-repeat")
+	-- use("tpope/vim-rhubarb")
+	-- use("tpope/vim-repeat")
 	use("tpope/vim-eunuch")
+	-- use("tpope/vim-dispatch")
 
 	use("zivyangll/git-blame.vim")
-	use("stevearc/vim-arduino")
-	use({ "turbio/bracey.vim", run = "npm install --prefix server" })
 	use("airblade/vim-gitgutter")
+
+	use("stevearc/vim-arduino")
+
+	use({ "turbio/bracey.vim", run = "npm install --prefix server" })
+
 	use("kyazdani42/nvim-tree.lua")
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("akinsho/toggleterm.nvim")
-	use("lukas-reineke/indent-blankline.nvim")
+	-- use("lukas-reineke/indent-blankline.nvim")
 	use("RRethy/nvim-align")
-	use("nvim-telescope/telescope.nvim")
+
+	use({ "nvim-telescope/telescope.nvim", tag = "0.1.x" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("ahmedkhalf/project.nvim")
+
 	use("nvim-lualine/lualine.nvim")
-	use("junegunn/gv.vim")
+	use({ "akinsho/bufferline.nvim", tag = "v2.*" })
+	-- use("junegunn/gv.vim")
 	use("aperezdc/vim-template")
 	-- use("Konfekt/FastFold")
 	-- use("matze/vim-tex-fold")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use("arjunmahishi/run-code.nvim")
+	use("nvim-treesitter/nvim-treesitter-context")
+	use("nvim-treesitter/playground")
+	-- use("arjunmahishi/run-code.nvim")
 	use("plasticboy/vim-markdown")
-	use("elzr/vim-json")
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	})
-	use("mg979/vim-visual-multi")
+	use("elzr/vim-json")
+	-- use("mg979/vim-visual-multi")
 	use("numToStr/Comment.nvim")
 
-	-- use("mfussenegger/nvim-dap")
-	-- use("mfussenegger/nvim-dap-python")
-	-- use("theHamsta/nvim-dap-virtual-text")
-	-- use("nvim-telescope/telescope-dap.nvim")
-	use({
-		"phaazon/hop.nvim",
-		branch = "v2", -- optional but strongly recommended
-		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup({ keys = "asdfjklč" })
-		end,
-	})
-	use({ "akinsho/bufferline.nvim", tag = "v2.*" })
+	use("theHamsta/nvim-dap-virtual-text")
+	use("nvim-telescope/telescope-dap.nvim")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	-- use({
+	-- 	"phaazon/hop.nvim",
+	-- 	branch = "v2", -- optional but strongly recommended
+	-- 	config = function()
+	-- 		-- you can configure Hop the way you like here; see :h hop-config
+	-- 		require("hop").setup({ keys = "asdfjkl;" })
+	-- 	end,
+	-- })
 
 	use({ "ThePrimeagen/vim-be-good" })
 	use({
@@ -119,6 +125,61 @@ return packer.startup(function(use)
 		end,
 		ft = "tex",
 	})
+	use("lewis6991/impatient.nvim")
+	use("mbbill/undotree")
+
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({})
+		end,
+	})
+	use("folke/twilight.nvim")
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({
+				icons = false,
+			})
+		end,
+	})
+
+	use("LionC/nest.nvim")
+
+	use({
+		"saecki/crates.nvim",
+		tag = "v0.3.0",
+		-- config = function()
+		-- 	require("crates").setup()
+		-- end,
+	})
+	use("nacro90/numb.nvim")
+	use("rcarriga/nvim-notify")
+	use({
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup({
+				cmdline = { enabled = false },
+				messages = { enabled = false },
+				popupmenu = { enabled = false },
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+		},
+	})
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup({
+				fill_char = "-",
+			})
+		end,
+	})
+	use("simrat39/rust-tools.nvim")
+	use("Shirk/vim-gas")
+	use("vimwiki/vimwiki")
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

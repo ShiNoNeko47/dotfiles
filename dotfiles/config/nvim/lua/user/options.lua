@@ -1,12 +1,13 @@
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
-vim.opt.cmdheight = 2
-vim.opt.completeopt = { "menuone", "noselect" }
-vim.opt.conceallevel = 0
+vim.opt.cmdheight = 1
+-- vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.conceallevel = 2
 vim.opt.fileencoding = "utf-8"
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
-vim.opt.mouse = "v"
+vim.opt.mouse = ""
+vim.opt.mousescroll = "ver:0,hor:0"
 vim.opt.pumheight = 10
 vim.opt.showmode = false
 vim.opt.smartcase = true
@@ -32,5 +33,17 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.shortmess:append("c")
-vim.cmd([[set iskeyword+=-]])
-vim.opt.conceallevel = 2
+vim.opt.gd = true
+vim.opt.iskeyword:append({ "-" })
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 5
+vim.cmd([[autocmd FileType cpp setlocal makeprg=g++\ %\ \-g\ \-Wall]])
+vim.cmd([[autocmd QuitPre * :NvimTreeClose]])
+vim.notify = require("notify")
+
+vim.api.nvim_set_var("undotree_WindowLayout", 2)
+vim.api.nvim_set_var("undotree_SetFocusWhenToggle", 1)
+vim.api.nvim_set_var("undotree_ShortIndicators", 1)
+vim.api.nvim_set_var("undotree_SplitWidth", 30)
+vim.api.nvim_set_var("undotree_HighlightChangedText", 0)
+vim.api.nvim_set_var("undotree_HelpLine", 0)

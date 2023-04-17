@@ -1,5 +1,3 @@
 #!/bin/sh
 
-killall picom || picom --experimental-backends -b &
-
-
+killall picom || picom -b &

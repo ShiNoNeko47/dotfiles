@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd ~/Wallpapers/
+cd ~/Wallpapers/ || exit
 
 feh --bg-fill $1
-echo "$1" > current_wallpaper
+echo "$1" >current_wallpaper

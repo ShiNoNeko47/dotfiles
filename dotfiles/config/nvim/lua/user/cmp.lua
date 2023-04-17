@@ -1,12 +1,6 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
+local cmp = require("cmp")
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
-end
+local luasnip = require("luasnip")
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -18,12 +12,21 @@ end
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body) -- For `luasnip` users.
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 	mapping = {
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-j>"] = cmp.mapping(function()
+			if luasnip.expand_or_jumpable then
+				luasnip.expand_or_jump()
+			end
+		end),
+		["<C-k>"] = cmp.mapping(function()
+			if luasnip.jumpable then
+				luasnip.jump(-1)
+			end
+		end),
+
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -40,8 +43,8 @@ cmp.setup({
 				cmp.select_next_item()
 			elseif luasnip.expandable() then
 				luasnip.expand()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
+			-- elseif luasnip.expand_or_jumpable() then
+			-- 	luasnip.expand_or_jump()
 			elseif check_backspace() then
 				fallback()
 			else
@@ -65,22 +68,24 @@ cmp.setup({
 		}),
 	},
 	formatting = {
-		fields = { "abbr", "menu" },
+		-- fields = { "abbr", "menu" },
 		format = function(entry, vim_item)
 			vim_item.menu = ({
-				nvim_lsp = "[LSP]",
-				nvim_lua = "[NVIM_LUA]",
-				luasnip = "[Snippet]",
-				buffer = "[Buffer]",
-				path = "[Path]",
+				crates = "[crates]",
+				nvim_lua = "[api]",
+				luasnip = "[snippet]",
+				nvim_lsp = "[lsp]",
+				path = "[path]",
+				buffer = "[buffer]",
 			})[entry.source.name]
 			return vim_item
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp" },
+		{ name = "crates" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
+		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "buffer" },
 	},
@@ -88,8 +93,17 @@ cmp.setup({
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
+	preselect = cmp.PreselectMode.None,
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 		native_menu = false,
 	},
+})
+
+cmp.setup.cmdline(":", {
+	sources = { { name = "cmdline" } },
+	mapping = cmp.mapping.preset.cmdline({
+		["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item()),
+		["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+	}),
 })

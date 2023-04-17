@@ -4,6 +4,7 @@
     follow = none
 
     width = 600
+	height = 250
     origin = top-right
     offset = 50x50
 
@@ -11,8 +12,10 @@
     progress_bar_height = 10
     progress_bar_frame_width = 1
     progress_bar_min_width = 150
-    progress_bar_max_width = 300
+    progress_bar_max_width = 600
+	highlight = "#cc0000"
     
+	notification_limit = 4
     indicate_hidden = yes
 
     transparency = 0
@@ -24,18 +27,19 @@
     frame_color = "#4e4246"
     separator_color = frame
     sort = false
-    idle_threshold = 120
-    font = Monospace 12
+    idle_threshold = 0
+	set_transient = no
+    font = Fira Code 12
     line_height = 0
     markup = full
-    format = "<b>%s</b>\n%b"
+    format = "<b>%s</b>\n%b\n%p"
     alignment = left
     vertical_alignment = center
     show_age_threshold = 60
     word_wrap = yes
     ellipsize = middle
     ignore_newline = no
-    stack_duplicates = false
+    stack_duplicates = true
     hide_duplicate_count = false
     show_indicators = no
     icon_position = off
@@ -70,3 +74,15 @@
     foreground = "#82849d"
     frame_color = "#ff0000"
     timeout = 0
+
+[volume]
+	appname = changeVolume
+	format = "<b>%s</b>"
+	history_ignore = yes
+	timeout = 2
+
+[brightness]
+	appname = changeBrightness
+	format = "<b>%s</b>"
+	history_ignore = yes
+	timeout = 2

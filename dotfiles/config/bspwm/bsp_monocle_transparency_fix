@@ -1,0 +1,37 @@
+#! /bin/sh
+
+desktop_changed=0
+bspc subscribe desktop_focus report | while IFS=":" read -r _ _ _ _ _ _ _ _ _ _ layout _ _;
+do
+	if [[ $desktop_changed == 1 ]]; then
+		desktop_changed=0
+	else
+		case $layout in
+			LT)
+				WINDOWS=$(bspc query -N -n .window -d)
+				if [[ -n $WINDOWS ]]; then
+					for i in $WINDOWS;
+					do
+						picom-trans -o 100 -w $i;
+					done;
+				fi;;
+			LM)
+				WINDOWS=$(bspc query -N -n .tiled -d);
+				WINDOW=$(bspc query -N -n)
+				if [[ $WINDOWS =~ $WINDOW ]]; then
+					if [[ -n $WINDOWS ]]; then
+						for i in $WINDOWS;
+						do
+							if [[ $i != $WINDOW ]]; then
+								picom-trans -o 0 -w $i;
+							else
+								picom-trans -o 100 -w $i;
+							fi
+						done;
+					fi
+				fi;;
+			*)
+				desktop_changed=1;;
+		esac;
+	fi
+done;

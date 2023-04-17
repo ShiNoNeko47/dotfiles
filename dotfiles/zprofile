@@ -6,6 +6,9 @@ export TERMINAL=kitty
 export SHELL=/usr/bin/zsh
 export QT_QPA_PLATFORMTHEME=qt5ct
 export _JAVA_AWT_WM_NONREPARENTING=1
+export ANI_CLI_EXTERNAL_MENU=1
+export STEAM_FRAME_FORCE_CLOSE=1
+export LEMONBAR_PORT=8080
 
 # export XKB_DEFAULT_LAYOUT="hr"
 export XKB_DEFAULT_OPTIONS="caps:none"
