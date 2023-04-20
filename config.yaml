@@ -37,12 +37,6 @@ dotfiles:
     src: local/bin/public_ip
     dst: ~/.local/bin/public_ip
     chmod: '755'
-  d_autorandr:
-    src: config/autorandr
-    dst: ~/.config/autorandr
-  d_dunst:
-    src: config/dunst
-    dst: ~/.config/dunst
   f_kitty.conf:
     src: config/kitty/kitty.conf
     dst: ~/.config/kitty/kitty.conf
@@ -154,6 +148,12 @@ dotfiles:
     src: local/bin/dunst_brightness
     dst: ~/.local/bin/dunst_brightness
     chmod: '755'
+  d_dunst:
+    src: config/dunst
+    dst: ~/.config/dunst
+  d_autorandr:
+    src: config/autorandr
+    dst: ~/.config/autorandr
 profiles:
   ShiNoNeko47:
     dotfiles:
@@ -166,8 +166,6 @@ profiles:
     - f_screenshot
     - f_screenshot_select
     - f_public_ip
-    - d_autorandr
-    - d_dunst
     - f_kitty.conf
     - d_picom
     - d_ranger
@@ -202,3 +200,5 @@ profiles:
     - f_lemonbar_rust
     - f_typepass
     - f_dunst_brightness
+    - d_dunst
+    - d_autorandr

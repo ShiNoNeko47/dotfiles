@@ -9,6 +9,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export ANI_CLI_EXTERNAL_MENU=1
 export STEAM_FRAME_FORCE_CLOSE=1
 export LEMONBAR_PORT=8080
+export DOTDROP_CONFIG="/home/nikola/Documents/dev/git/dotfiles/config.yaml"
 
 # export XKB_DEFAULT_LAYOUT="hr"
 export XKB_DEFAULT_OPTIONS="caps:none"
