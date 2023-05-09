@@ -11,7 +11,7 @@ local nest = require("nest")
 
 nest.applyKeymaps({
 	{
-		buffer = true,
+		-- buffer = true,
 		{
 			{
 				"g",
@@ -26,9 +26,9 @@ nest.applyKeymaps({
 				"<leader>",
 				{
 					{ "ca", vim.lsp.buf.code_action },
-					{ "q",  vim.diagnostic.setloclist },
-					{ "d",  vim.diagnostic.open_float },
-					{ "f",  vim.lsp.buf.format },
+					{ "q", vim.diagnostic.setloclist },
+					{ "d", vim.diagnostic.open_float },
+					{ "f", vim.lsp.buf.format },
 				},
 			},
 			{ "[d", vim.diagnostic.goto_next },

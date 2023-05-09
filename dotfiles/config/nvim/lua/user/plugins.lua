@@ -127,7 +127,6 @@ return packer.startup(function(use)
 	})
 	use("lewis6991/impatient.nvim")
 	use("mbbill/undotree")
-
 	use({
 		"folke/which-key.nvim",
 		config = function()
@@ -179,7 +178,6 @@ return packer.startup(function(use)
 	use("simrat39/rust-tools.nvim")
 	use("Shirk/vim-gas")
 	use("vimwiki/vimwiki")
-
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
