@@ -17,6 +17,7 @@ feh --bg-scale ${WALLPAPER}
 # lemonbar_sh | lemonbar -o -2 -f "mmcedar" -f "iosevka" -g 1888x20+16+6 | sh &
 lemonbar_rust &
 stalonetray &
+volume_monitor &
 # firewall-applet &
 # discord &
 # protonvpn-applet &

@@ -154,6 +154,10 @@ dotfiles:
   d_autorandr:
     src: config/autorandr
     dst: ~/.config/autorandr
+  f_volume_monitor:
+    src: local/bin/volume_monitor
+    dst: ~/.local/bin/volume_monitor
+    chmod: '755'
 profiles:
   ShiNoNeko47:
     dotfiles:
@@ -202,3 +206,4 @@ profiles:
     - f_dunst_brightness
     - d_dunst
     - d_autorandr
+    - f_volume_monitor

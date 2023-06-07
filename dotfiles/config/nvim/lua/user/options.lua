@@ -6,7 +6,7 @@ vim.opt.conceallevel = 2
 vim.opt.fileencoding = "utf-8"
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
-vim.opt.mouse = "nvi"
+vim.opt.mouse = "a"
 vim.opt.mousescroll = "ver:0,hor:0"
 vim.opt.pumheight = 10
 vim.opt.showmode = false
@@ -39,6 +39,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 5
 vim.cmd([[autocmd FileType cpp setlocal makeprg=g++\ %\ \-g\ \-Wall]])
 vim.cmd([[autocmd QuitPre * :NvimTreeClose]])
+vim.cmd([[autocmd BufWritePre * :cclose]])
 vim.notify = require("notify")
 
 vim.api.nvim_set_var("undotree_WindowLayout", 2)

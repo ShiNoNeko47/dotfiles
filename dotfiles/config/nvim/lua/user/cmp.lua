@@ -43,8 +43,8 @@ cmp.setup({
 				cmp.select_next_item()
 			elseif luasnip.expandable() then
 				luasnip.expand()
-			-- elseif luasnip.expand_or_jumpable() then
-			-- 	luasnip.expand_or_jump()
+				-- elseif luasnip.expand_or_jumpable() then
+				-- 	luasnip.expand_or_jump()
 			elseif check_backspace() then
 				fallback()
 			else
@@ -84,6 +84,7 @@ cmp.setup({
 	sources = {
 		{ name = "crates" },
 		{ name = "nvim_lua" },
+		{ name = "codeium" },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "path" },

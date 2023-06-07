@@ -23,13 +23,13 @@ super + q
 	qutebrowser
 
 XF86AudioMute
-	sh -c "pactl set-sink-mute 0 toggle; dunst_volume"
+	sh -c "pactl set-sink-mute 0 toggle"
 
 XF86AudioLowerVolume
-	sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%; dunst_volume"
+	sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"
 
 XF86AudioRaiseVolume
-	sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%; dunst_volume"
+	sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"
 
 XF86MonBrightnessDown
 	sh -c "brightnessctl s 5-; dunst_brightness"

@@ -122,6 +122,8 @@ return packer.startup(function(use)
 		opt = true,
 		config = function()
 			vim.g.vimtex_view_general_viewer = "zathura"
+			vim.g.vimtex_quickfix_open_on_warning = 0
+			vim.g.vimtex_quickfix_open_on_error = 0
 		end,
 		ft = "tex",
 	})
@@ -177,7 +179,30 @@ return packer.startup(function(use)
 	})
 	use("simrat39/rust-tools.nvim")
 	use("Shirk/vim-gas")
+	use({
+		"jcdickinson/http.nvim",
+		run = "cargo build --workspace --release",
+	})
 	use("vimwiki/vimwiki")
+	use({
+		"jcdickinson/codeium.nvim",
+		requires = {
+			"jcdickinson/http.nvim",
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({})
+		end,
+	})
+	use({
+		"aserowy/tmux.nvim",
+		config = function()
+			return require("tmux").setup()
+		end,
+	})
+	use("tpope/vim-obsession")
+	use("akinsho/flutter-tools.nvim")
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

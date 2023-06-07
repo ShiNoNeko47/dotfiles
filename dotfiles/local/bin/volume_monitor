@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+VOLUME=$(pamixer --get-volume-human)
+
+pactl subscribe | grep --line-buffered "sink" | while read _; do
+	if [[ $VOLUME != $(pamixer --get-volume-human) ]]; then
+		dunst_volume
+		VOLUME=$(pamixer --get-volume-human)
+	fi
+done
