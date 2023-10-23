@@ -37,7 +37,7 @@ vim.opt.gd = true
 vim.opt.iskeyword:append({ "-" })
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 5
-vim.cmd([[autocmd FileType cpp setlocal makeprg=g++\ %\ \-g\ \-Wall]])
+-- vim.cmd([[autocmd FileType cpp setlocal makeprg=g++\ %\ \-g\ \-Wall]])
 vim.cmd([[autocmd QuitPre * :NvimTreeClose]])
 vim.cmd([[autocmd BufWritePre * :cclose]])
 vim.notify = require("notify")

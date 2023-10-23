@@ -7,5 +7,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.latexindent,
+		null_ls.builtins.formatting.xmlformat,
 	},
 })

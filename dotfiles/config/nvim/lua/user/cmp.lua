@@ -16,19 +16,19 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-j>"] = cmp.mapping(function()
+		["<C-l>"] = cmp.mapping(function()
 			if luasnip.expand_or_jumpable then
 				luasnip.expand_or_jump()
 			end
 		end),
-		["<C-k>"] = cmp.mapping(function()
+		["<C-h>"] = cmp.mapping(function()
 			if luasnip.jumpable then
 				luasnip.jump(-1)
 			end
 		end),
 
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+		["<C-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+		["<C-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 		["<C-e>"] = cmp.mapping({

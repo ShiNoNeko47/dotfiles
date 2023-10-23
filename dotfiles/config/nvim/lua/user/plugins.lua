@@ -58,11 +58,22 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
-	use("jiangmiao/auto-pairs")
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup()
+		end,
+	})
+	use({
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	})
 
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
-	-- use("tpope/vim-rhubarb")
+	use("tpope/vim-rhubarb")
 	-- use("tpope/vim-repeat")
 	use("tpope/vim-eunuch")
 	-- use("tpope/vim-dispatch")
@@ -140,6 +151,10 @@ return packer.startup(function(use)
 		"folke/trouble.nvim",
 		config = function()
 			require("trouble").setup({
+				-- severity = vim.diagnostic.severity.ERROR,
+				-- auto_open = true,
+				-- auto_close = true,
+				use_diagnostic_signs = true,
 				icons = false,
 			})
 		end,

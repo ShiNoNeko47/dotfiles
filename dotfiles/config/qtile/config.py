@@ -81,7 +81,8 @@ keys = [
     Key(
         [mod, "shift"],
         "slash",
-        lazy.spawn('rofi -show drun -monitor -4 -drun-display-format "{name}"'),
+        lazy.spawn(
+            'rofi -show drun -monitor -4 -drun-display-format "{name}"'),
         desc="Run Launcher",
     ),
     Key(
@@ -101,7 +102,8 @@ keys = [
     ),
     Key([mod, "control"], "p", lazy.spawn("typepass")),
     Key([mod], "d", lazy.spawn("dunstctl history-pop"), desc="Show dunst history"),
-    Key([mod, "shift"], "d", lazy.spawn("dunstctl close"), desc="Close dunst history"),
+    Key([mod, "shift"], "d", lazy.spawn(
+        "dunstctl close"), desc="Close dunst history"),
     Key([], "Print", lazy.spawn("screenshot"), desc="Take a screensht"),
     Key(
         ["shift"],
@@ -121,7 +123,8 @@ keys = [
     # Switch between windows in current stack pane
     Key([mod], "h", lazy.layout.left(), desc="Switch left in current stack "),
     Key([mod], "l", lazy.layout.right(), desc="Switch right in current stack "),
-    Key([mod], "j", lazy.group.next_window(), desc="Switch to next window in group"),
+    Key([mod], "j", lazy.group.next_window(),
+        desc="Switch to next window in group"),
     Key(
         [mod], "k", lazy.group.prev_window(), desc="Switch to previous window in group"
     ),
@@ -236,8 +239,10 @@ groups.append(
     ),
 )
 
-keys.append(Key([mod], "F1", lazy.group["scratchpad"].dropdown_toggle("kitty")))
-keys.append(Key([mod], "F2", lazy.group["scratchpad"].dropdown_toggle("qtile shell")))
+keys.append(
+    Key([mod], "F1", lazy.group["scratchpad"].dropdown_toggle("kitty")))
+keys.append(
+    Key([mod], "F2", lazy.group["scratchpad"].dropdown_toggle("qtile shell")))
 
 colors = ("#000000", "#440000", "#880000", "#aa0000", "#cc0000", "#ff0000")
 
@@ -307,7 +312,7 @@ screens = [
                 ),
                 angle(0, 4),
                 space(0),
-                widget.WindowName(background=colors[0]),
+                widget.WindowName(foreground="#ffffff", background=colors[0]),
                 angle(4, 0),
                 space(4),
                 widget.CheckUpdates(
@@ -352,7 +357,8 @@ screens = [
                 widget.Systray(),
                 angle(4, 0),
                 space(4),
-                widget.CurrentLayoutIcon(background=colors[4], padding=5, scale=0.8),
+                widget.CurrentLayoutIcon(
+                    background=colors[4], padding=5, scale=0.8),
             ],
             20,
         ),
@@ -409,7 +415,8 @@ screens = [
                 angle(0, 4),
                 angle(4, 0),
                 space(4),
-                widget.CurrentLayoutIcon(background=colors[4], padding=5, scale=0.8),
+                widget.CurrentLayoutIcon(
+                    background=colors[4], padding=5, scale=0.8),
             ],
             20,
         ),

@@ -1,7 +1,7 @@
 [global]
     monitor = 1
 
-    follow = none
+    follow = keyboard
 
     width = 600
 	height = 250

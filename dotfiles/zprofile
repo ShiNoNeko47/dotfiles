@@ -21,5 +21,6 @@ alias startx="startx ~/.xinitrc"
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   # exec qtile start -b wayland
-  exec startx &> /dev/null
+  # exec startx &> /dev/null
+  exec Hyprland
 fi
